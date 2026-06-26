@@ -33,10 +33,13 @@
 ## ⚠️ Pendiente de aplicar (IMPORTANTE)
 
 ### 1. Cerrar Milestone M2.4 — Auditoría y Aprobación Documental
-La auditoría documental ya se completó. Falta:
-- Corregir inconsistencias menores en Blueprint, Roadmap, README y PROJECT_BIBLE.
-- Resolver con Carlos el destino de `docs/archive/CORE_ARCHITECTURE.md` (ya está archivado; confirmar si se elimina).
-- Obtener aprobación formal de Carlos para cerrar M2.4.
+✅ **Paquete de aprobación preparado** en `docs/reports/M2.4_approval_request.md`.
+
+🔄 **Pendiente:** Carlos debe revisar y aprobar el paquete. Para facilitar la revisión:
+- Revisar `docs/reports/M2.4_approval_request.md` (resumen ejecutivo).
+- Si es necesario, profundizar en `docs/reports/M2.4_documentation_audit.md` (auditoría detallada).
+- Revisar los documentos maestros: `CJ_OS_BLUEPRINT.md`, `CJ_OS_PHILOSOPHY.md`, `ROADMAP.md`, `PROJECT_BIBLE.md`.
+- Firmar/aprobar la sección 8 de `M2.4_approval_request.md`.
 
 ### 2. Reiniciar n8n con la versión fija
 El cambio de versión en `docker-compose.yml` **aún no se aplica** porque Docker no está activo.

@@ -1,5 +1,18 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.20
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Preparación del paquete de aprobación de M2.4**:
+  - Creación de `docs/reports/M2.4_approval_request.md` con resumen ejecutivo, documentos incluidos, inconsistencias corregidas, pendientes por decidir, criterios de aprobación y espacio para firma de Carlos.
+  - Actualización de `PENDIENTES.md` para indicar que el paquete está listo para revisión de Carlos.
+- **No se programó código nuevo.**
+- **No se crearon tablas de PostgreSQL.**
+- **No se modificó la base de datos.**
+
 ## Versión 0.0.19
 
 **Fecha:** 2026-06-26
