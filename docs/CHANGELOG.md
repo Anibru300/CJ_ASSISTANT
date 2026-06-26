@@ -1,5 +1,36 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.30
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Ejecución de la KES-Pilot de entrada de mercancía**:
+  - Carlos respondió las 20 preguntas del cuestionario.
+  - Se registraron las respuestas en `docs/reports/KES-Pilot_entrada_mercancia.md`.
+  - Se creó `docs/reports/KES-Pilot_entrada_mercancia_synthesis.md` con la síntesis del proceso real.
+- **Hallazgos principales validados**:
+  - Logística y Compras es el mismo puesto en 3P.
+  - Almacén recibe físicamente, cuenta e inspecciona; Logística registra la entrada en SAE.
+  - SAE actualiza existencias automáticamente.
+  - Sub-almacenes se asignan por proveedor.
+  - Se toman fotos en cada recepción.
+  - Excepciones más frecuentes: faltante y sobrante.
+  - Productos líquidos (detergentes) y frágiles requieren inspección especial.
+  - Excel y SAE no siempre coinciden; se corrigen con ajustes manuales.
+- **Actualización del Business Dictionary**:
+  - Se agregaron términos validados: Sub-almacén, Cantidad viva, Logística y Compras, Recepción, Cuarentena, Mini-SAE.
+  - Versión actualizada a 0.3.0.
+- **Actualización de la Knowledge Coverage Matrix**:
+  - KES-Pilot marcada como completada.
+  - Cobertura de Almacén elevada a "Avanzado" 🟢.
+- **Actualización de `PENDIENTES.md`**:
+  - KES-Pilot marcada como completada.
+  - Foco actual: integraciones SAE/Excel y owner user en n8n.
+- **No se crearon tablas adicionales.**
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.29
 
 **Fecha:** 2026-06-26

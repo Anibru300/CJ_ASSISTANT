@@ -6,7 +6,7 @@
 **Dominio:** Almacén / Compras / Calidad / Logística  
 **Participantes sugeridos:** Carlos, Salvador (Jefe de Almacén), Francisco (Auxiliar de Almacén), Comprador, Logística.  
 **Duración objetivo:** 30–45 minutos  
-**Estado:** 🔄 En ejecución — cuestionario preparado para Carlos/Salvador/Francisco
+**Estado:** ✅ Completada — respuestas de Carlos registradas el 26/06/2026
 
 ---
 
@@ -94,50 +94,50 @@ Se eligió porque:
 
 | Pregunta | Respuesta |
 |----------|-----------|
-| ¿Qué lo inicia? | Proveedor confirma envío → Logística notifica. |
-| ¿Qué lo termina? | Jefe de Almacén sabe que llegará mercancía. |
+| ¿Qué lo inicia? | Proveedor confirma envío. Logística y Compras (mismo puesto) avisa a Almacén. |
+| ¿Qué lo termina? | Almacén sabe que llegará mercancía. |
 | ¿Qué información consume? | OC, proveedor, cantidad estimada, fecha/hora. |
 | ¿Qué información produce? | Notificación interna (correo/mensaje). |
 | ¿Qué evento genera? | `llego_mercancia` |
 
-### P2 — Entrada en SAE
+### P2 — Recepción física y reporte a Logística
 
 | Pregunta | Respuesta |
 |----------|-----------|
-| ¿Qué lo inicia? | Llegada del transporte y documentos completos. |
-| ¿Qué lo termina? | Logística registra la entrada en Aspel-SAE. |
-| ¿Qué información consume? | Factura, nota de remisión, OC. |
-| ¿Qué información produce? | Entrada registrada en SAE, existencia actualizada en SAE. |
-| ¿Qué evento genera? | `se_registro_entrada_en_sae` |
-
-### P3 — Recepción física en almacén
-
-| Pregunta | Respuesta |
-|----------|-----------|
-| ¿Qué lo inicia? | Entrada registrada en SAE. |
-| ¿Qué lo termina? | Conteo físico e inspección de empaque realizados. |
-| ¿Qué información consume? | OC, factura, producto físico. |
-| ¿Qué información produce? | Conteo real, evidencia fotográfica, checklist. |
+| ¿Qué lo inicia? | Llegada del transporte al almacén. |
+| ¿Qué lo termina? | Almacén entrega a Logística el reporte de recepción (conforme, faltante, sobrante o daño) y la factura firmada. |
+| ¿Qué información consume? | Factura, nota de remisión/CP, OC. |
+| ¿Qué información produce? | Reporte de recepción, factura firmada, evidencia fotográfica. |
 | ¿Qué evento genera? | `se_inicio_recepcion` |
+
+### P3 — Entrada en SAE
+
+| Pregunta | Respuesta |
+|----------|-----------|
+| ¿Qué lo inicia? | Almacén termina de revisar el material y entrega reporte a Logística. |
+| ¿Qué lo termina? | Logística registra la entrada en Aspel-SAE. |
+| ¿Qué información consume? | Factura firmada, reporte de recepción de Almacén, OC. |
+| ¿Qué información produce? | Entrada registrada en SAE; existencias en SAE se actualizan automáticamente. |
+| ¿Qué evento genera? | `se_registro_entrada_en_sae` |
 
 ### P4 — Decisión de aceptación y asignación a sub-almacén
 
 | Pregunta | Respuesta |
 |----------|-----------|
-| ¿Qué lo inicia? | Resultado de inspección física. |
-| ¿Qué lo termina? | Decisión: aceptar, aceptar con nota, rechazar; y asignación de sub-almacén. |
-| ¿Qué información consume? | Discrepancias, daños, evidencia, proveedor asociado al producto. |
-| ¿Qué información produce? | Decisión documentada, sub-almacén destino, correo a compras/logística. |
+| ¿Qué lo inicia? | Resultado de recepción física y discrepancias detectadas. |
+| ¿Qué lo termina? | Decisión: aceptar, aceptar con nota, rechazar; y asignación de sub-almacén por proveedor. |
+| ¿Qué información consume? | Discrepancias (faltante/sobrante), daños, evidencia fotográfica, proveedor del producto. |
+| ¿Qué información produce? | Decisión documentada, sub-almacén destino, notificación a Logística/Compras. |
 | ¿Qué evento genera? | `mercancia_aprobada` / `mercancia_rechazada`, `se_asigno_subalmacen` |
 
-### P5 — Entrada al sub-almacén
+### P5 — Entrada al sub-almacén y actualización del Excel
 
 | Pregunta | Respuesta |
 |----------|-----------|
 | ¿Qué lo inicia? | Aprobación de recepción y asignación de sub-almacén. |
-| ¿Qué lo termina? | Mercancía en ubicación del sub-almacén y Excel actualizado. |
+| ¿Qué lo termina? | Mercancía en ubicación del sub-almacén y Excel actualizado (hoja del sub-almacén + Mini-SAE). |
 | ¿Qué información consume? | Productos, cantidades, sub-almacén destino. |
-| ¿Qué información produce? | Vale de entrada, actualización de existencias en sub-almacén y Mini-SAE. |
+| ¿Qué información produce? | Vale de entrada, actualización de existencias en sub-almacén y Mini-SAE (mediante macro). |
 | ¿Qué evento genera? | `se_genero_vale_entrada`, `se_actualizo_existencia` |
 
 ---
@@ -148,11 +148,12 @@ Se eligió porque:
 |---|-------|------|-------------------|--------------------------|
 | R1 | Toda entrada requiere OC o autorización previa. | Integridad | No | — |
 | R2 | La cantidad recibida debe coincidir con factura/remisión. | Integridad | Con nota | Jefe de Almacén + Compras |
-| R3 | Producto dañado no entra a inventario. | Calidad | Solo con excepción documentada | Jefe de Almacén + Calidad |
-| R4 | Toda discrepancia requiere evidencia fotográfica. | Flujo | No | — |
+| R3 | Producto dañado se reporta a Logística; la aceptación parcial es posible. | Calidad | Solo con excepción documentada | Logística / Gerencia |
+| R4 | Toda recepción debe generar evidencia fotográfica. | Flujo | No | — |
 | R5 | Vale de entrada se genera solo después de aprobación. | Flujo | No | — |
-| R6 | Cada producto se asigna a un sub-almacén según proveedor/clasificación. | Flujo | Solo con autorización | Jefe de Almacén |
+| R6 | Cada producto se asigna a un sub-almacén según proveedor. | Flujo | Solo con autorización | Jefe de Almacén |
 | R7 | Mini-SAE debe reflejar la suma de existencias de todos los sub-almacenes. | Integridad | No | — |
+| R8 | El Excel de almacén se actualiza diariamente por el Jefe de Almacén. | Flujo | No | — |
 
 ---
 
@@ -160,10 +161,11 @@ Se eligió porque:
 
 | Excepción | Causa | Acción |
 |-----------|-------|--------|
-| Mercancía sin OC | Error de proveedor o compras urgentes | Detener, notificar a Compras, esperar autorización. |
-| Cantidad mayor a lo pedido | Error de surtido del proveedor | Aceptar solo con nota y autorización; rechazar excedente. |
+| Material faltante o sobrante | Error de surtido del proveedor | Reportar a Logística; ella lo arregla con el proveedor. |
+| Cantidad mayor a lo pedido | Error de surtido del proveedor | Se queda el excedente y Logística solicita factura del sobrante. |
 | Producto dañado en tránsito | Transporte deficiente | Tomar evidencia, separar, gestionar con proveedor/seguro. |
-| Producto no coincide con OC | Error de proveedor | Detener, documentar, esperar instrucciones de Compras. |
+| Producto no coincide con OC | Error de proveedor | Reportar a Logística; ella lo arregla con el proveedor. |
+| Producto nuevo sin sub-almacén asignado | Nuevo código o proveedor | Jefe de Almacén decide asignación según proveedor. |
 | Falta certificado de calidad | Documentación incompleta | Registrar observación, notificar, condicionar entrada. |
 | Producto sin sub-almacén definido | Nuevo código o proveedor | Jefe de Almacén decide asignación; registrar en catálogo. |
 
@@ -245,7 +247,65 @@ Responder con la operación real de 3P, no con el procedimiento ideal.
 
 ---
 
-## 13. Resultados esperados de la KES-Pilot
+## 13. Respuestas completas de Carlos (26/06/2026)
+
+### Sobre el arribo
+1. **¿Cómo se entera el almacén de que va a llegar mercancía?**  
+   Logística avisa a Almacén. El puesto de Logística también hace Compras (nacional e internacional).
+2. **¿La mercancía llega siempre con OC?**  
+   Sí, Almacén siempre tiene la OC o la factura de lo que va a llegar porque Logística se la proporciona.
+3. **¿Quién recibe físicamente al transportista?**  
+   Almacén. Le pide la documentación y después pasa a Logística el reporte de recepción (conforme, faltante, sobrante o daño) y la factura firmada.
+
+### Sobre SAE
+4. **¿Quién registra la entrada en SAE y cuándo?**  
+   Logística. Lo hace cuando Almacén termina de revisar el material que llegó.
+5. **¿SAE actualiza automáticamente las existencias?**  
+   Sí.
+6. **¿El almacén consulta SAE?**  
+   Principalmente lo usan Ventas, Facturación, Logística y Contabilidad. Almacén solo hace consultas o ve movimientos.
+
+### Sobre el conteo e inspección
+7. **¿Quién cuenta la mercancía y cómo?**  
+   Almacén (Jefe y Auxiliar). Varía según cómo llegue: emplaye, caja, tarima o contenedor.
+8. **¿Se toman fotos?**  
+   Se toman fotos en cada recepción. (O debería hacerse.)
+9. **¿Qué pasa si llega dañada una parte y el resto bien?**  
+   Se acepta, pero se reporta a Logística y ella lo arregla con el proveedor.
+
+### Sobre sub-almacenes
+10. **¿Cómo se decide a qué sub-almacén va cada producto?**  
+    Por proveedor. Si el proveedor es LUBING, va al sub-almacén de LUBING.
+11. **¿Un mismo producto puede estar en varios sub-almacenes?**  
+    Sí, cuando un producto puede ser surtido por varios proveedores diferentes.
+12. **¿Qué pasa si llega un producto nuevo sin sub-almacén?**  
+    Se ve de qué proveedor es y se asigna al almacén de ese proveedor.
+
+### Sobre el Excel
+13. **¿Quién y cuándo actualiza el Excel?**  
+    El Jefe de Almacén lo actualiza diariamente.
+14. **¿Se actualiza primero el sub-almacén o Mini-SAE?**  
+    Al mismo tiempo. Hay una macro que actualiza ambos porque es la misma información.
+15. **¿El Excel y SAE no coinciden?**  
+    Sí pasa seguido. Se identifica por qué y se hacen ajustes.
+
+### Sobre excepciones
+16. **¿Excepción más frecuente?**  
+    Material faltante o sobrante.
+17. **¿Cuánto tiempo en cuarentena?**  
+    1 o 2 días en lo que se revisa.
+18. **¿Qué pasa si mandan más de lo pedido?**  
+    Se queda el excedente y Logística reporta al proveedor para que facture el sobrante.
+
+### Sobre decisiones
+19. **¿Quién decide aceptar mercancía con discrepancia?**  
+    Logística o Gerencia.
+20. **¿Productos con inspección especial?**  
+    Sí, detergentes (líquidos) y productos frágiles.
+
+---
+
+## 14. Resultados esperados de la KES-Pilot
 
 Al finalizar la sesión se debe tener:
 

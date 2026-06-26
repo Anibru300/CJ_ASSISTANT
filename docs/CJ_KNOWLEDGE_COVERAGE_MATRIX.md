@@ -35,7 +35,7 @@ La matriz mide, por dominio y por categoría de conocimiento, el porcentaje capt
 | **D1 Dirección** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ Pendiente |
 | **D2 Ventas** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ Pendiente |
 | **D3 Compras** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ Pendiente |
-| **D4 Almacén** | ⚪ | 🟡 | 🟡 | 🟡 | 🟡 | 🟡 | 🔴 | 🔴 | 🟡 | ⚪ | 🟡 En preparación |
+| **D4 Almacén** | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟡 | 🟢 | 🟢 | ⚪ | 🟢 Avanzado |
 | **D5 Logística** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ Pendiente |
 | **D6 Calidad** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ Pendiente |
 | **D7 Contabilidad** | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ | ⚪ Pendiente |
@@ -58,15 +58,15 @@ La matriz mide, por dominio y por categoría de conocimiento, el porcentaje capt
 
 | Categoría | Ítems esperados | Ítems capturados | Validados | Cobertura | Estado |
 |-----------|-----------------|------------------|-----------|-----------|--------|
-| Actores | 7 | 4 | 2 | 57% | 🟡 |
-| Objetos | 11 | 6 | 3 | 55% | 🟡 |
-| Eventos | 14 | 8 | 4 | 57% | 🟡 |
-| Procesos | 10 | 5 | 2 | 50% | 🟡 |
-| Reglas | 13 | 7 | 4 | 54% | 🟡 |
-| Excepciones | 10 | 3 | 1 | 30% | 🔴 |
-| Decisiones | 6 | 2 | 1 | 33% | 🔴 |
-| KPIs | 7 | 3 | 1 | 43% | 🟡 |
-| Automatizaciones | 8 | 1 | 0 | 13% | ⚪ |
+| Actores | 7 | 7 | 6 | 86% | 🟢 |
+| Objetos | 11 | 10 | 9 | 82% | 🟢 |
+| Eventos | 14 | 12 | 11 | 79% | 🟢 |
+| Procesos | 10 | 8 | 7 | 70% | 🟢 |
+| Reglas | 13 | 10 | 9 | 69% | 🟢 |
+| Excepciones | 10 | 7 | 5 | 50% | 🟡 |
+| Decisiones | 6 | 5 | 5 | 83% | 🟢 |
+| KPIs | 7 | 5 | 4 | 57% | 🟢 |
+| Automatizaciones | 8 | 3 | 0 | 0% | ⚪ |
 
 > **Nota:** Los números son estimaciones iniciales. Se ajustarán durante la KES-01.
 
@@ -103,7 +103,7 @@ Solo cuentan los ítems **validados**. Los capturados pero no validados (hipóte
 
 | KES | Dominio | Fecha | Cobertura antes | Cobertura después | Estado |
 |-----|---------|-------|-----------------|-------------------|--------|
-| KES-Pilot | Metodología | — | — | — | Programada |
+| KES-Pilot | Metodología / Almacén | 2026-06-26 | 0% | 65% | ✅ Completada |
 | KES-0 | Lenguaje Empresarial | — | 0% | — | Programada |
 | KES-01 | Almacén | — | 0% | — | Programada |
 | KES-02 | Compras | — | 0% | — | Pendiente |

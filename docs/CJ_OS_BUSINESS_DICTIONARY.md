@@ -1,8 +1,8 @@
 # Business Dictionary — CJ_OS
 
-**Versión:** 0.2.0  
-**Fecha:** 2026-06-25  
-**Estado:** Borrador inicial — requiere KES-0 de Lenguaje Empresarial  
+**Versión:** 0.3.0  
+**Fecha:** 2026-06-26  
+**Estado:** Enriquecido con términos validados en KES-Pilot de entrada de mercancía  
 **Propósito:** Construir el **lenguaje corporativo estándar de 3P** para que personas, procesos, agentes de IA y documentos usen el mismo significado.
 
 ---
@@ -232,3 +232,103 @@ Cada entrada del diccionario contiene:
 |-------|---------|--------|
 | 2026-06-25 | 0.1.0 | Creación del Business Dictionary con términos iniciales de Almacén, Compras, Ventas y Logística. |
 | 2026-06-25 | 0.2.0 | Reforzado el objetivo de KES-0: construir lenguaje corporativo estándar, no solo validar términos. |
+
+---
+
+### Sub-almacén
+
+| Campo | Valor |
+|-------|-------|
+| **Nombre oficial** | Sub-almacén |
+| **Definición** | Ubicación lógica de inventario asociada a un proveedor específico, dentro del almacén general de 3P. Ejemplos: A-1 ROXELL, A-2 LUBING. |
+| **Sinónimos aceptados** | Almacén de proveedor, ubicación de inventario. |
+| **Lo que NO significa** | Rack físico, bodega de terceros, zona de cuarentena. |
+| **Dominio** | Almacén, Compras, Logística. |
+| **Objetos relacionados** | Producto, Ubicación, Proveedor, Existencia. |
+| **Estado** | Validado |
+| **KES de origen** | KES-Pilot entrada de mercancía (2026-06-26) |
+| **Propietario** | Salvador / Francisco |
+
+---
+
+### Cantidad viva
+
+| Campo | Valor |
+|-------|-------|
+| **Nombre oficial** | Cantidad viva |
+| **Definición** | Cantidad de un vale de salida que aún no se ha facturado ni vendido, pero que sigue formando parte del inventario de 3P para fines de conteo. |
+| **Sinónimos aceptados** | Cantidad pendiente de facturar. |
+| **Lo que NO significa** | Cantidad disponible para venta, cantidad física en almacén, stock comprometido. |
+| **Dominio** | Almacén, Ventas, Contabilidad. |
+| **Objetos relacionados** | Vale, Vale línea, Producto, Existencia. |
+| **Estado** | Validado |
+| **KES de origen** | KES-Pilot entrada de mercancía (2026-06-26) |
+| **Propietario** | Salvador / Francisco |
+
+---
+
+### Logística y Compras
+
+| Campo | Valor |
+|-------|-------|
+| **Nombre oficial** | Logística y Compras |
+| **Definición** | Puesto combinado en 3P responsable de compras nacionales e internacionales, coordinación de envíos, aviso de arribos a Almacén y registro de entradas en Aspel-SAE. |
+| **Sinónimos aceptados** | Compras, Logística. |
+| **Lo que NO significa** | Almacén, Contabilidad, Ventas. |
+| **Dominio** | Compras, Logística, Almacén. |
+| **Objetos relacionados** | Proveedor, Orden de compra, Entrada, SAE. |
+| **Estado** | Validado |
+| **KES de origen** | KES-Pilot entrada de mercancía (2026-06-26) |
+| **Propietario** | Carlos |
+
+---
+
+### Recepción
+
+| Campo | Valor |
+|-------|-------|
+| **Nombre oficial** | Recepción |
+| **Definición** | Acción física de recibir mercancía del transportista, contarla, inspeccionarla, documentarla con fotografías y entregar reporte a Logística. |
+| **Sinónimos aceptados** | Recepción de mercancía. |
+| **Lo que NO significa** | Entrada en SAE (eso lo hace Logística), embarque, surtido. |
+| **Dominio** | Almacén, Calidad, Compras. |
+| **Objetos relacionados** | Producto, Proveedor, Orden de compra, Entrada, Merma, Evidencia. |
+| **Estado** | Validado |
+| **KES de origen** | KES-Pilot entrada de mercancía (2026-06-26) |
+| **Propietario** | Salvador / Francisco |
+
+---
+
+### Cuarentena
+
+| Campo | Valor |
+|-------|-------|
+| **Nombre oficial** | Cuarentena |
+| **Definición** | Estado temporal en el que se coloca mercancía en espera de inspección, decisión de aceptación o resolución de discrepancia. Típicamente 1-2 días. |
+| **Sinónimos aceptados** | Zona de cuarentena, material en revisión. |
+| **Lo que NO significa** | Merma, rechazo definitivo, sub-almacén permanente. |
+| **Dominio** | Almacén, Calidad. |
+| **Objetos relacionados** | Producto, Ubicación, Inspección, No conformidad. |
+| **Estado** | Validado |
+| **KES de origen** | KES-Pilot entrada de mercancía (2026-06-26) |
+| **Propietario** | Salvador / Francisco |
+
+---
+
+### Mini-SAE
+
+| Campo | Valor |
+|-------|-------|
+| **Nombre oficial** | Mini-SAE |
+| **Definición** | Hoja de Excel que concentra el inventario general de 3P, extraído de Aspel-SAE, y que debe reflejar la suma de las existencias de todos los sub-almacenes. |
+| **Sinónimos aceptados** | Inventario general, concentrado de existencias. |
+| **Lo que NO significa** | Sub-almacén, reporte de contabilidad, base de datos de SAE. |
+| **Dominio** | Almacén, Contabilidad, Logística. |
+| **Objetos relacionados** | Producto, Existencia, Sub-almacén, SAE. |
+| **Estado** | Validado |
+| **KES de origen** | KES-Pilot entrada de mercancía (2026-06-26) |
+| **Propietario** | Salvador / Francisco |
+
+---
+
+*Diccionario actualizado tras KES-Pilot de entrada de mercancía.*
