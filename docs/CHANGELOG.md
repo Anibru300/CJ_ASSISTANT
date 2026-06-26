@@ -1,5 +1,23 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.29
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Inicio del KES-Pilot de entrada de mercancía**:
+  - Se actualizó `docs/reports/KES-Pilot_entrada_mercancia.md` al enfoque real de 3P:
+    - Entrada registrada por Logística en **Aspel-SAE**.
+    - Distribución y control de existencias en **sub-almacenes** (A-1 ROXELL, A-2 LUBING, etc.).
+    - Reflejo en inventario general (**Mini-SAE**).
+  - Se agregó un **cuestionario práctico de 20 preguntas** para Carlos, Salvador o Francisco.
+  - Se incluyeron eventos adicionales: `se_registro_entrada_en_sae`, `se_asigno_subalmacen`.
+  - Se agregaron reglas R6 y R7 sobre asignación a sub-almacenes y conciliación con Mini-SAE.
+- **Actualización de `PENDIENTES.md`**:
+  - KES-Pilot marcado como en curso y foco principal.
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.28
 
 **Fecha:** 2026-06-26

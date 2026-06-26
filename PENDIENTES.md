@@ -73,9 +73,9 @@
 
 ## 🎯 Foco actual
 
-1. **Iniciar M4 — Integraciones** (SAE y Excel de almacén).
-2. **Crear usuario owner en n8n** para ejecutar workflows desde GUI.
-3. **Ejecutar KES-Pilot** de entrada de mercancía.
+1. **Ejecutar KES-Pilot** de entrada de mercancía (en curso; cuestionario preparado).
+2. **Iniciar M4 — Integraciones** (SAE y Excel de almacén).
+3. **Crear usuario owner en n8n** para ejecutar workflows desde GUI.
 
 ---
 
