@@ -1,5 +1,28 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.25
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Ejecución exitosa del Hello World end-to-end**:
+  - Se inició el Core `core/api/hello_world.py` y respondió correctamente a `curl http://localhost:8000/hello`.
+  - Se ejecutó el workflow `CJ_OS Hello World` por CLI de n8n:
+    ```bash
+    docker compose -f infrastructure/compose/docker-compose.yml --env-file .env run --rm --entrypoint n8n n8n execute --id=b2357379-f7b2-4266-a8f9-f1a64840c944
+    ```
+  - El workflow finalizó con estado `success` y el nodo HTTP Request recibió la respuesta esperada del Core.
+  - Se creó `docs/reports/Hello_World_execution.md` con la evidencia de ejecución.
+- **Actualización de documentación**:
+  - `docs/HELLO_WORLD.md`: estado actualizado a "ejecutado por CLI"; pendiente owner user para GUI.
+  - `PENDIENTES.md`: Hello World marcado como validado; foco actual reordenado hacia M3, owner user y KES-Pilot.
+- **Preparación de M3 para aprobación**:
+  - `docs/DATA_MODEL.md` v0.1.0 listo para revisión y aprobación de Carlos.
+- **No se creó el owner user en n8n** (aún requiere GUI).
+- **No se crearon tablas de PostgreSQL productivas** (rehén: aprobación de M3).
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.24
 
 **Fecha:** 2026-06-26

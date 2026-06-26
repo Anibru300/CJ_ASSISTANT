@@ -135,4 +135,5 @@ La API REST de n8n (`/rest/workflows`) requiere autenticación mediante **API ke
 - ✅ Docker y n8n corren.
 - ✅ `N8N_API_KEY` configurada.
 - ✅ Workflow importado en n8n por CLI.
-- 🔄 Ejecución del workflow pendiente de crear owner user en n8n.
+- ✅ Workflow ejecutado exitosamente por CLI (validación técnica Core ↔ n8n).
+- 🔄 Ejecución desde GUI pendiente de crear owner user en n8n.

@@ -68,11 +68,21 @@
 
 ---
 
+## ✅ Hello World end-to-end
+
+- ✅ Servidor Core funciona.
+- ✅ Pruebas unitarias pasan.
+- ✅ Workflow importado e **ejecutado exitosamente por CLI** (ver `docs/reports/Hello_World_execution.md`).
+- 🔄 Ejecución desde GUI requiere crear owner user en n8n.
+
+---
+
 ## 🎯 Foco actual
 
-1. **Crear usuario owner en n8n** para poder ejecutar workflows y usar la API REST.
-2. **Ejecutar KES-Pilot** de entrada de mercancía.
-3. **Aprobar Modelo de Datos (M3)** y crear tablas en PostgreSQL.
+1. **Aprobar Modelo de Datos (M3)** — `docs/DATA_MODEL.md`.
+2. **Crear usuario owner en n8n** para ejecutar workflows desde la GUI.
+3. **Ejecutar KES-Pilot** de entrada de mercancía.
+4. Crear tablas de PostgreSQL tras aprobar M3.
 
 ---
 
