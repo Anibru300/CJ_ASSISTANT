@@ -1,8 +1,8 @@
 # Modelo de Datos — CJ_OS
 
-**Versión:** 0.1.0  
+**Versión:** 0.1.1  
 **Fecha:** 2026-06-26  
-**Estado:** Borrador inicial — M3 Modelo de Datos (pendiente de aprobación de Carlos)  
+**Estado:** Borrador ajustado con hallazgos de BD_ALMACEN_3P — M3 Modelo de Datos (pendiente de aprobación de Carlos)  
 **Propósito:** Traducir la Ontología Empresarial de 3P a un esquema de PostgreSQL estructurado, trazable y escalable.
 
 ---
@@ -27,8 +27,11 @@
 | Rack / Ubicación | `ubicaciones` | Almacén |
 | Existencia | `existencias` | Almacén |
 | Vale | `vales` / `vale_lineas` | Almacén |
+| Motivo de salida | `motivos_salida` | Almacén |
 | Orden de compra | `ordenes_compra` / `oc_lineas` | Compras |
 | Merma | `mermas` | Almacén / Calidad |
+| Conteo de inventario | `conteos_inventario` | Almacén |
+| Folio / numeración | `folios` | Core |
 | Pedido | `pedidos` / `pedido_lineas` | Ventas |
 | Cliente | `clientes` | Ventas |
 | Proveedor | `proveedores` | Compras |
@@ -204,10 +207,14 @@ CREATE TABLE oc_lineas (
 CREATE TABLE productos (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     sku VARCHAR(50) UNIQUE NOT NULL,
+    codigo_sae VARCHAR(50),
     descripcion VARCHAR(255) NOT NULL,
     familia VARCHAR(50),
     proveedor_principal_id UUID REFERENCES proveedores(id),
+    clave_sat VARCHAR(20),
     costo DECIMAL(15,2),
+    costo_promedio DECIMAL(15,2),
+    ultimo_costo DECIMAL(15,2),
     precio_venta DECIMAL(15,2),
     unidad_de_medida VARCHAR(20),
     peso DECIMAL(10,3),
@@ -216,19 +223,24 @@ CREATE TABLE productos (
     manual_path TEXT,
     es_material_indirecto BOOLEAN DEFAULT FALSE,
     requiere_inspeccion_calidad BOOLEAN DEFAULT FALSE,
+    requiere_serie BOOLEAN DEFAULT FALSE,
+    requiere_pedimento BOOLEAN DEFAULT FALSE,
     activo BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Ubicaciones / Racks
+-- Ubicaciones / Racks / Almacenes logicos
 CREATE TABLE ubicaciones (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     codigo VARCHAR(30) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
     pasillo VARCHAR(10),
     nivel VARCHAR(10),
     zona VARCHAR(30),
-    tipo VARCHAR(20), -- picking, reserva, mermas, cuarentena
+    tipo VARCHAR(20), -- picking, reserva, mermas, cuarentena, consignacion, comodato, garantias
+    propietario VARCHAR(100), -- 3P, ROXELL, LUBING, TECNICOS LEON, etc.
+    es_propiedad_de_tercero BOOLEAN DEFAULT FALSE,
     capacidad_maxima DECIMAL(12,3),
     productos_permitidos TEXT[],
     activo BOOLEAN DEFAULT TRUE,
@@ -242,6 +254,7 @@ CREATE TABLE existencias (
     producto_id UUID REFERENCES productos(id),
     ubicacion_id UUID REFERENCES ubicaciones(id),
     cantidad_fisica DECIMAL(12,3) DEFAULT 0,
+    cantidad_inventario DECIMAL(12,3) DEFAULT 0, -- valor contable / inventariado
     cantidad_comprometida DECIMAL(12,3) DEFAULT 0,
     cantidad_disponible DECIMAL(12,3) GENERATED ALWAYS AS (cantidad_fisica - cantidad_comprometida) STORED,
     stock_minimo DECIMAL(12,3),
@@ -254,15 +267,57 @@ CREATE TABLE existencias (
     UNIQUE(producto_id, ubicacion_id)
 );
 
+-- Conteos de inventario fisico
+CREATE TABLE conteos_inventario (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    folio VARCHAR(30) UNIQUE NOT NULL,
+    fecha_hora TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    ubicacion_id UUID REFERENCES ubicaciones(id),
+    producto_id UUID REFERENCES productos(id),
+    existencia_sae DECIMAL(12,3) DEFAULT 0,
+    existencia_vales DECIMAL(12,3) DEFAULT 0,
+    existencia_pedidos DECIMAL(12,3) DEFAULT 0,
+    conteo_fisico DECIMAL(12,3) NOT NULL,
+    diferencia DECIMAL(12,3) GENERATED ALWAYS AS (conteo_fisico - existencia_sae) STORED,
+    estado VARCHAR(10) DEFAULT 'OK', -- OK, DIF
+    observaciones TEXT,
+    responsable_id UUID REFERENCES empleados(id),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Control de folios por tipo de documento
+CREATE TABLE folios (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    tipo_documento VARCHAR(50) UNIQUE NOT NULL, -- vale_entrada, vale_salida, orden_compra, pedido, conteo
+    prefijo VARCHAR(10),
+    ultimo_folio INTEGER DEFAULT 0,
+    longitud INTEGER DEFAULT 6,
+    activo BOOLEAN DEFAULT TRUE,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Catálogo de motivos de salida (venta, consigna, prueba, comodato, prestamo, muestra, herramienta, etc.)
+CREATE TABLE motivos_salida (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    codigo VARCHAR(30) UNIQUE NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    requiere_devolucion BOOLEAN DEFAULT FALSE,
+    es_transferencia_propiedad BOOLEAN DEFAULT TRUE,
+    activo BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
 -- Vales de movimiento
 CREATE TABLE vales (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     folio VARCHAR(30) UNIQUE NOT NULL,
     tipo VARCHAR(20) NOT NULL, -- entrada, salida, transferencia, ajuste, merma
+    motivo_salida_id UUID REFERENCES motivos_salida(id),
     estado VARCHAR(20) DEFAULT 'abierto',
     fecha TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     responsable_id UUID REFERENCES empleados(id),
-    motivo TEXT,
+    entregado_a VARCHAR(200), -- persona o entidad destino
+    observaciones TEXT,
     documento_origen_id UUID, -- puede referenciar OC, pedido, etc.
     documento_origen_tipo VARCHAR(50),
     activo BOOLEAN DEFAULT TRUE,
@@ -278,7 +333,14 @@ CREATE TABLE vale_lineas (
     ubicacion_origen_id UUID REFERENCES ubicaciones(id),
     ubicacion_destino_id UUID REFERENCES ubicaciones(id),
     cantidad DECIMAL(12,3) NOT NULL,
+    cantidad_viva DECIMAL(12,3) DEFAULT 0, -- cantidad pendiente de surtir/asignar
+    cantidad_asignada_pedido DECIMAL(12,3) DEFAULT 0,
     costo_unitario DECIMAL(15,2),
+    numero_serie VARCHAR(100),
+    pedimento VARCHAR(100),
+    pedido_interno VARCHAR(50),
+    no_factura VARCHAR(50),
+    comentarios TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 ```
@@ -320,11 +382,16 @@ CREATE TABLE audit_log (
 
 ```sql
 CREATE INDEX idx_productos_sku ON productos(sku);
+CREATE INDEX idx_productos_codigo_sae ON productos(codigo_sae);
 CREATE INDEX idx_productos_familia ON productos(familia);
 CREATE INDEX idx_existencias_producto ON existencias(producto_id);
 CREATE INDEX idx_existencias_ubicacion ON existencias(ubicacion_id);
 CREATE INDEX idx_vales_folio ON vales(folio);
 CREATE INDEX idx_vales_tipo ON vales(tipo);
+CREATE INDEX idx_vales_motivo ON vales(motivo_salida_id);
+CREATE INDEX idx_vale_lineas_serie ON vale_lineas(numero_serie);
+CREATE INDEX idx_conteos_folio ON conteos_inventario(folio);
+CREATE INDEX idx_conteos_ubicacion_producto ON conteos_inventario(ubicacion_id, producto_id);
 CREATE INDEX idx_ordenes_compra_proveedor ON ordenes_compra(proveedor_id);
 CREATE INDEX idx_pedidos_cliente ON pedidos(cliente_id);
 CREATE INDEX idx_eventos_tipo ON eventos(tipo);
@@ -343,6 +410,9 @@ CREATE INDEX idx_audit_entidad ON audit_log(entidad_tipo, entidad_id);
 5. `productos.sku` único.
 6. `clientes.rfc` único si no es nulo.
 7. `proveedores.rfc` único si no es nulo.
+8. Un vale de tipo `salida` debe tener un `motivo_salida_id`.
+9. `ubicaciones.codigo` único.
+10. `folios.tipo_documento` único.
 
 ---
 

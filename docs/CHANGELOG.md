@@ -1,5 +1,30 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.26
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Análisis de la base de datos real de almacén**:
+  - Se revisó `G:\Mi unidad\zapia\Base de datos de almacen\BD_ALMACEN_3P_backup_20260625_173001.xlsx`.
+  - Se copió una versión de trabajo a `workspace/almacen/data/BD_ALMACEN_3P_20260625.xlsx` (solo lectura).
+  - Se identificó que el archivo contiene 43 hojas: vales, detalle de vales, 24 inventarios por almacén, mini-SAE, resultados de inventario, fotos, configuración y auditoría.
+  - Se creó `docs/reports/BD_ALMACEN_3P_analysis.md` con hallazgos clave y preguntas para el experto de almacén.
+- **Ajustes al Modelo de Datos (M3)**:
+  - Se actualizó `docs/DATA_MODEL.md` a v0.1.1 incorporando:
+    - Tabla `motivos_salida` y campo `motivo_salida_id` en `vales`.
+    - Campos `cantidad_viva`, `cantidad_asignada_pedido`, `numero_serie`, `pedimento`, `pedido_interno`, `no_factura` en `vale_lineas`.
+    - Campos `propietario` y `es_propiedad_de_tercero` en `ubicaciones`.
+    - Campos `codigo_sae`, `costo_promedio`, `ultimo_costo`, `clave_sat`, `requiere_serie`, `requiere_pedimento` en `productos`.
+    - Campo `cantidad_inventario` en `existencias`.
+    - Nuevas tablas: `conteos_inventario` y `folios`.
+  - Se actualizaron índices y restricciones.
+- **Actualización de `PENDIENTES.md`**:
+  - M3 marcado como ajustado con hallazgos de BD_ALMACEN_3P.
+- **No se crearon tablas de PostgreSQL productivas** (rehén: aprobación de M3).
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.25
 
 **Fecha:** 2026-06-26
