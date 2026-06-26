@@ -63,8 +63,9 @@
     - 🔄 **Pendiente:** ejecutar la sesión con Carlos y el experto de Almacén.
 
 12. **M3 — Modelo de Datos**:
-    - Se preparó borrador `docs/DATA_MODEL.md` v0.1.1.
+    - Se preparó borrador `docs/DATA_MODEL.md` v0.1.2.
     - Se ajustó con hallazgos del análisis de `BD_ALMACEN_3P`.
+    - Se incorporaron respuestas de Carlos sobre sub-almacenes, cantidad viva, existencias y entradas desde SAE.
     - Se creó `docs/reports/BD_ALMACEN_3P_analysis.md`.
     - 🔄 **Pendiente:** aprobación de Carlos.
 

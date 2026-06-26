@@ -1,8 +1,8 @@
 # Modelo de Datos — CJ_OS
 
-**Versión:** 0.1.1  
+**Versión:** 0.1.2  
 **Fecha:** 2026-06-26  
-**Estado:** Borrador ajustado con hallazgos de BD_ALMACEN_3P — M3 Modelo de Datos (pendiente de aprobación de Carlos)  
+**Estado:** Borrador ajustado con respuestas de Carlos sobre BD_ALMACEN_3P — M3 Modelo de Datos (pendiente de aprobación de Carlos)  
 **Propósito:** Traducir la Ontología Empresarial de 3P a un esquema de PostgreSQL estructurado, trazable y escalable.
 
 ---
@@ -249,12 +249,13 @@ CREATE TABLE ubicaciones (
 );
 
 -- Existencias
+-- Nota: cantidad_fisica representa la existencia en ese sub-almacen/ubicacion.
+-- El total general por producto (equivalente a MINI_SAE) se obtiene con SUM(cantidad_fisica).
 CREATE TABLE existencias (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     producto_id UUID REFERENCES productos(id),
     ubicacion_id UUID REFERENCES ubicaciones(id),
     cantidad_fisica DECIMAL(12,3) DEFAULT 0,
-    cantidad_inventario DECIMAL(12,3) DEFAULT 0, -- valor contable / inventariado
     cantidad_comprometida DECIMAL(12,3) DEFAULT 0,
     cantidad_disponible DECIMAL(12,3) GENERATED ALWAYS AS (cantidad_fisica - cantidad_comprometida) STORED,
     stock_minimo DECIMAL(12,3),

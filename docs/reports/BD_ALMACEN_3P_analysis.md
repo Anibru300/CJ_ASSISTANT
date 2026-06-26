@@ -161,7 +161,43 @@ El modelo propuesto en `docs/DATA_MODEL.md` cubre la mayoría de las entidades, 
 
 ---
 
-## 5. Próximos pasos recomendados
+## 5. Respuestas de Carlos (2026-06-26)
+
+1. **¿Los almacenes A-1 ROXELL, A-2 LUBING son consignación?**  
+   No. Son **sub-almacenes** que forman parte del inventario de 3P. El número (A-1, A-2) identifica el almacén y el nombre es el proveedor asociado. El `MINI_SAE` es el inventario general concentrado. Un mismo código puede existir en varios sub-almacenes; comparten sub-almacén cuando varios proveedores pueden surtirlo.
+
+2. **¿Qué es `CANTIDAD_VIVA`?**  
+   Es lo que queda vivo de un vale. Ejemplo: un vale salieron 10 piezas, pero se han ido facturando gradualmente. Si ya se facturaron 5, quedan 5 vivas. Esas 5 piezas siguen formando parte del inventario y se usan para el conteo físico.
+
+3. **¿Diferencia entre `Exist. inventario` y `Exist. almacen`?**  
+   - `Exist. inventario` = cantidad en ese sub-almacén.  
+   - `Exist. almacen` = cantidad total en todos los sub-almacenes incluyendo ese.  
+   Ejemplo: en ROXELL hay 5 piezas y en LUBING hay 5 del mismo código. En ROXELL, `Exist. inventario` = 5 y `Exist. almacen` = 10.
+
+4. **¿Los vales abiertos aún no se surten?**  
+   No. Al crearse el vale, el material ya se mandó y se surtió. Un vale abierto significa que aún tiene cantidad viva > 0. Cuando la cantidad viva llega a 0 (porque ya se facturó o vendió todo), el vale se cierra.
+
+5. **¿Dónde se registran las entradas de mercancía?**  
+   Logística las ingresa directamente al **ERP SAE**. CJ_OS no las captura manualmente; las obtendrá de SAE mediante integración.
+
+6. **¿La hoja `PEDIDOS_FACTURAS` se usa?**  
+   Es una nueva implementación. Aún no se ha usado.
+
+---
+
+## 6. Implicaciones corregidas para el Modelo de Datos
+
+| Hallazgo | Ajuste en M3 |
+|---|---|
+| Los sub-almacenes son inventario propio de 3P. | `ubicaciones.propietario` = "3P" por defecto; `es_propiedad_de_tercero` = false. |
+| `Exist. almacen` es la suma de todos los sub-almacenes. | No se guarda en cada registro; se calcula con `SUM(existencias.cantidad_fisica)` por producto. |
+| `CANTIDAD_VIVA` controla la vida de un vale. | `vale_lineas.cantidad_viva` es el campo clave; cuando llega a 0, `vales.estado` = cerrado. |
+| Las entradas se capturan en SAE. | CJ_OS leerá entradas desde SAE; no se construye captura manual de entradas en esta fase. |
+| Pedidos/facturas aún no se usan. | Se mantienen en el modelo como tablas preparadas, pero no son prioritarias. |
+
+---
+
+## 7. Próximos pasos recomendados
 
 1. **Ajustar el Modelo de Datos (M3)** con los hallazgos de este análisis.
 2. **Ejecutar el KES-Pilot de entrada de mercancía** usando este archivo como base de preguntas.

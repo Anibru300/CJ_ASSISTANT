@@ -1,5 +1,29 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.27
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Incorporación de respuestas de Carlos sobre BD_ALMACEN_3P**:
+  - Los sub-almacenes (A-1 ROXELL, A-2 LUBING, etc.) son inventario propio de 3P, clasificados por proveedor.
+  - `MINI_SAE` es el inventario general concentrado.
+  - `CANTIDAD_VIVA` es lo que queda por facturar/vender de un vale; mientras sea > 0, el vale está abierto.
+  - `Exist. inventario` = existencia en ese sub-almacén; `Exist. almacen` = total en todos los sub-almacenes.
+  - Las entradas de mercancía se capturan en SAE; CJ_OS las obtendrá por integración.
+  - `PEDIDOS_FACTURAS` es una implementación nueva aún no usada.
+- **Ajustes al Modelo de Datos (M3)**:
+  - Se actualizó `docs/DATA_MODEL.md` a v0.1.2.
+  - Se eliminó el campo `cantidad_inventario` de `existencias`; el total general se calculará con `SUM(cantidad_fisica)` por producto.
+  - Se agregaron notas explicativas en la tabla `existencias`.
+- **Actualización de reporte**:
+  - `docs/reports/BD_ALMACEN_3P_analysis.md` ahora incluye la sección "Respuestas de Carlos" e implicaciones corregidas.
+- **Actualización de `PENDIENTES.md`**:
+  - M3 v0.1.2 listo para aprobación.
+- **No se crearon tablas de PostgreSQL productivas** (rehén: aprobación de M3).
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.26
 
 **Fecha:** 2026-06-26
