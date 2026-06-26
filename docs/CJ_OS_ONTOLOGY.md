@@ -40,7 +40,6 @@ Una ontología no es una base de datos. Es un documento que define:
 - **Atributos:**
   - `sku` (único, obligatorio)
   - `descripcion`
-  - `familia`
   - `proveedor_principal`
   - `costo`
   - `precio_venta`
@@ -138,6 +137,7 @@ Una ontología no es una base de datos. Es un documento que define:
   - `estado` (nuevo, reservado, surtido, enviado, facturado, cancelado)
   - `lineas`
   - `total`
+  - `factura`
 - **Restricciones:**
   - Pedido cancelado no genera salida.
   - Reserva solo si hay disponibilidad.
@@ -193,10 +193,11 @@ Una ontología no es una base de datos. Es un documento que define:
   - `contacto_principal`
   - `telefono`
   - `correo`
-  - `tipo` (mayorista, minorista, interno)
+  - `tipo` (mayorista, minorista, distribuidor, interno)
   - `limite_credito`
   - `dias_credito`
   - `estado`
+  - `Comentarios`
 - **Restricciones:**
   - RFC único si está registrado.
   - Cliente con saldo vencido no recibe pedido sin autorización.
@@ -211,6 +212,8 @@ Una ontología no es una base de datos. Es un documento que define:
   - `lineas`
   - `subtotal`
   - `impuestos`
+  - `Lab`
+  - `Atencion a`
   - `total`
   - `estado` (borrador, enviada, aceptada, rechazada, vencida)
 - **Restricciones:**
@@ -534,11 +537,11 @@ Auditoria ──registra cambios───► Cualquier entidad
 
 ## 7. Criterios de aprobación
 
-- [ ] Cada entidad tiene nombre, definición, atributos y restricciones.
-- [ ] No hay sinónimos para el mismo concepto.
-- [ ] Las relaciones entre entidades son explícitas.
-- [ ] Las restricciones indican si son negociables y quién autoriza excepciones.
-- [ ] Carlos valida que la ontología representa la realidad de 3P.
+- [x ] Cada entidad tiene nombre, definición, atributos y restricciones.
+- [ x] No hay sinónimos para el mismo concepto.
+- [ x] Las relaciones entre entidades son explícitas.
+- [ x] Las restricciones indican si son negociables y quién autoriza excepciones.
+- [ x] Carlos valida que la ontología representa la realidad de 3P.
 
 ---
 

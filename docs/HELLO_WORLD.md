@@ -1,6 +1,6 @@
 # CJ_OS — Hello World end-to-end
 
-**Versión:** 0.0.18  
+**Versión:** 0.0.23  
 **Propósito:** Validar que n8n puede comunicarse con el Core de CJ_OS antes de avanzar al Modelo de Datos.
 
 ---
@@ -73,12 +73,31 @@ curl -X POST http://localhost:8000/hello \
 
 ### 3. Importar el workflow en n8n
 
+#### Opción A — Manualmente por GUI
+
 1. Abrir n8n en `http://localhost:5678`.
 2. Menú **Workflows** > **Import from File**.
 3. Seleccionar `infrastructure/n8n/workflows/hello_world.json`.
 4. Guardar y hacer clic en **Test workflow**.
 
-> Si n8n corre dentro de Docker y el Core fuera, usar `http://host.docker.internal:8000/hello`.
+#### Opción B — Por CLI (recomendada)
+
+Asegurar que `N8N_API_KEY` esté configurada en `.env` y `docker-compose.yml`, luego:
+
+```bash
+cd /c/Projects/CJ_Assistant
+docker compose -f infrastructure/compose/docker-compose.yml --env-file .env up -d --no-deps n8n
+docker compose -f infrastructure/compose/docker-compose.yml cp infrastructure/n8n/workflows/hello_world.json n8n:/tmp/hello_world.json
+docker compose -f infrastructure/compose/docker-compose.yml exec n8n n8n import:workflow --input=/tmp/hello_world.json
+```
+
+Verificar que aparezca en el listado:
+
+```bash
+docker compose -f infrastructure/compose/docker-compose.yml exec n8n n8n list:workflow
+```
+
+> Si n8n corre dentro de Docker y el Core fuera, usar `http://host.docker.internal:8000/hello`.  
 > Si n8n corre fuera de Docker, usar `http://localhost:8000/hello`.
 
 ### 4. Ejecutar las pruebas automáticas
@@ -97,25 +116,23 @@ python testing/test_hello_world.py
 
 ---
 
-## Nota sobre importación automática del workflow
+## Nota sobre autenticación y API REST
 
-La API REST de n8n (`/rest/workflows`) requiere autenticación mediante **API key** (`N8N_API_KEY`) o sesión de usuario. La autenticación básica (`N8N_BASIC_AUTH`) protege la interfaz web, pero no es suficiente para la API REST en las versiones recientes.
+La API REST de n8n (`/rest/workflows`) requiere autenticación mediante **API key** (`N8N_API_KEY`) o sesión de usuario. La autenticación básica (`N8N_BASIC_AUTH`) protege la interfaz web, pero no es suficiente para la API REST en versiones recientes.
 
-Por lo tanto, el workflow debe importarse de una de estas formas:
+**Requisito adicional para ejecutar workflows:** n8n debe tener un **owner user** creado. Si no existe, la ejecución desde la GUI o la API REST puede fallar con un error de usuario. Para crearlo:
 
-1. **Manualmente por GUI:**
-   - Abrir `http://localhost:5678`.
-   - Menú **Workflows** > **Import from File**.
-   - Seleccionar `infrastructure/n8n/workflows/hello_world.json`.
+1. Abrir `http://localhost:5678` en el navegador.
+2. Completar el formulario de primer usuario (owner).
+3. Volver al workflow y hacer clic en **Test workflow**.
 
-2. **Configurar API key (opcional para automatizar):**
-   - Agregar `N8N_API_KEY` en `.env` y `docker-compose.yml`.
-   - Reiniciar n8n.
-   - Usar la API REST con el header `X-N8N-API-KEY`.
+---
 
 ## Estado actual
 
 - ✅ Servidor Core funciona.
 - ✅ Pruebas unitarias pasan.
 - ✅ Docker y n8n corren.
-- 🔄 Importación del workflow en n8n pendiente (requiere GUI o API key).
+- ✅ `N8N_API_KEY` configurada.
+- ✅ Workflow importado en n8n por CLI.
+- 🔄 Ejecución del workflow pendiente de crear owner user en n8n.

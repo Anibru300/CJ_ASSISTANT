@@ -1,5 +1,33 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.23
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Configuración de API key en n8n**:
+  - Se agregó `N8N_API_KEY` a `.env` y `.env.example`.
+  - Se actualizó `infrastructure/compose/docker-compose.yml` para inyectar `N8N_API_KEY` en el contenedor `cj_n8n`.
+  - n8n fue reiniciado y valida correctamente la variable (HTTP 200 en `http://localhost:5678`).
+- **Importación automática del workflow Hello World**:
+  - Se actualizó `infrastructure/n8n/workflows/hello_world.json` para incluir `id` y poder importarse por CLI.
+  - Se importó el workflow en n8n mediante:
+    ```bash
+    docker compose -f infrastructure/compose/docker-compose.yml --env-file .env exec n8n n8n import:workflow --input=/tmp/hello_world.json
+    ```
+  - Listado de workflows confirma: `b2357379-f7b2-4266-a8f9-f1a64840c944 | CJ_OS Hello World`.
+- **Preparación de KES-Pilot — Entrada de mercancía**:
+  - Se creó `docs/reports/KES-Pilot_entrada_mercancia.md` con plan, preguntas, decisiones y entregables para la primera sesión de adquisición de conocimiento con el experto de Almacén.
+- **Preparación de M3 — Modelo de Datos**:
+  - Se creó `docs/DATA_MODEL.md` (borrador v0.1.0) con capa de negocio, lógica y física basado en la Ontología M2.5.
+- **Actualización de documentación operativa**:
+  - `docs/HELLO_WORLD.md`: se documentó la importación por CLI, la necesidad de un owner user para ejecutar workflows, y el estado actual.
+  - `PENDIENTES.md`: se actualizó el foco actual a Ontología M2.5, owner user en n8n, KES-Pilot y M3.
+- **No se ejecutó el workflow en n8n** (rehén: falta crear owner user).
+- **No se crearon tablas de PostgreSQL productivas** (rehén: aprobación de M2.5 y M3).
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.22
 
 **Fecha:** 2026-06-26
@@ -118,7 +146,7 @@
 - **No se programó código.**
 - **No se crearon tablas de PostgreSQL.**
 - **No se crearon APIs.**
-- **No se modificó la base de datos.**
+- **No se tocó la base de datos.**
 - **No se reinició n8n** (Docker no estaba disponible en el momento de la operación).
 
 ## Versión 0.0.16
@@ -340,7 +368,7 @@
 - Verificación de que n8n responde correctamente en la interfaz web (`HTTP 200`).
 - Confirmación de que n8n creó **109 tablas** en PostgreSQL.
 - Creación del documento `docs/N8N_ARCHITECTURE.md` explicando función, responsabilidades y flujo de n8n dentro de CJ_OS.
-- Registro de la decisión arquitectónica en `docs/DECISIONS.md`.
+- Registro de la decisión aritectónica en `docs/DECISIONS.md`.
 - Actualización de `docs/PROJECT_BIBLE.md` para reflejar a n8n como orquestador.
 - Actualización de `docs/INSTALL_LOG.md`.
 - **No se crearon workflows.**
@@ -394,9 +422,9 @@
 ### Cambios realizados
 
 - Inicio oficial de la **Fase M1.2 - Validación de PostgreSQL y Redis**, autorizado por Carlos.
-- Revisión del archivo `infrastructure/compose/docker-compose.yml` para validar la definición de los servicios `postgres` y `redis`.
+- Revisión del archivo `infrastructure/compose/docker-compose.yml` para validar la definición de los servicios `postgres` i `redis`.
 - Levantamiento controlado de únicamente PostgreSQL y Redis mediante `docker compose up -d postgres redis`.
-- Descarga exitosa de las imágenes `postgres:16-alpine` y `redis:7-alpine` desde Docker Hub.
+- Descarga exitosa de las imágenes `postgres:16-alpine` i `redis:7-alpine` desde Docker Hub.
 - Creación correcta de la red `cj_network`.
 - Verificación de healthchecks: ambos contenedores reportan estado `healthy`.
 - Validación de PostgreSQL mediante consulta `SELECT version();` — responde `PostgreSQL 16.14`.
@@ -458,7 +486,7 @@
 
 ## Versión 0.0.4
 
-**Fecha:** 2026-06-25
+**Fecha:** 2026-06-26
 
 ### Cambios realizados
 

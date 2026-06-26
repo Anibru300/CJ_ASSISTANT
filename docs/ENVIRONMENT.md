@@ -68,6 +68,7 @@ CJ_Assistant/
 | `N8N_BASIC_AUTH_USER` | Usuario de n8n | `admin` | Sí |
 | `N8N_BASIC_AUTH_PASSWORD` | Contraseña de n8n | `cambiar_en_produccion` | Sí |
 | `N8N_ENCRYPTION_KEY` | Clave de encriptación de credenciales | `clave-segura-32-caracteres` | Sí |
+| `N8N_API_KEY` | API key para acceso programático a la API REST de n8n | `hex_de_64_caracteres` | Recomendado |
 | `N8N_DATA_PATH` | Ruta de datos persistentes de n8n | `./runtime/n8n` | Sí |
 | `WEBHOOK_URL` | URL base para webhooks | `http://localhost:5678/` | Sí |
 
@@ -251,6 +252,7 @@ N8N_BASIC_AUTH_ACTIVE=true
 N8N_BASIC_AUTH_USER=admin
 N8N_BASIC_AUTH_PASSWORD=cambiar_en_produccion
 N8N_ENCRYPTION_KEY=cambiar_por_clave_segura_de_32_chars
+N8N_API_KEY=cambiar_por_api_key_segura_de_64_caracteres_hex
 N8N_DATA_PATH=./runtime/n8n
 WEBHOOK_URL=http://localhost:5678/
 
