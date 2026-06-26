@@ -97,6 +97,25 @@ python testing/test_hello_world.py
 
 ---
 
-## Bloqueo actual
+## Nota sobre importación automática del workflow
 
-Para ejecutar el workflow end-to-end se requiere que **Docker Desktop esté activo** y n8n esté corriendo. En este momento Docker no está disponible, por lo que la prueba manual con curl y las pruebas unitarias del CLI sí funcionan, pero la integración con n8n queda pendiente de reinicio de Docker.
+La API REST de n8n (`/rest/workflows`) requiere autenticación mediante **API key** (`N8N_API_KEY`) o sesión de usuario. La autenticación básica (`N8N_BASIC_AUTH`) protege la interfaz web, pero no es suficiente para la API REST en las versiones recientes.
+
+Por lo tanto, el workflow debe importarse de una de estas formas:
+
+1. **Manualmente por GUI:**
+   - Abrir `http://localhost:5678`.
+   - Menú **Workflows** > **Import from File**.
+   - Seleccionar `infrastructure/n8n/workflows/hello_world.json`.
+
+2. **Configurar API key (opcional para automatizar):**
+   - Agregar `N8N_API_KEY` en `.env` y `docker-compose.yml`.
+   - Reiniciar n8n.
+   - Usar la API REST con el header `X-N8N-API-KEY`.
+
+## Estado actual
+
+- ✅ Servidor Core funciona.
+- ✅ Pruebas unitarias pasan.
+- ✅ Docker y n8n corren.
+- 🔄 Importación del workflow en n8n pendiente (requiere GUI o API key).

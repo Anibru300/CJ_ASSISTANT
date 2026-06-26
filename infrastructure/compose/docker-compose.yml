@@ -38,7 +38,9 @@ services:
 
   n8n:
     # Version fija para evitar cambios inesperados. Validar antes de actualizar.
-    image: n8nio/n8n:1.84.0
+    # NOTA: La base de datos de n8n ya fue migrada con la imagen 2.27.4.
+    # No bajar a versiones anteriores para evitar errores de migracion.
+    image: n8nio/n8n:2.27.4
     container_name: cj_n8n
     restart: unless-stopped
     environment:

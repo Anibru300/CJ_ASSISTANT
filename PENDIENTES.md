@@ -54,14 +54,19 @@
 
 - `docs/CJ_OS_ONTOLOGY.md`
 
-### Actividades pendientes
+### Estado
 
-1. Identificar entidades por módulo de negocio:
-   - Almacén, Ventas, Compras, Logística, Calidad, SGC, RRHH, Gerencia.
-2. Definir atributos de cada entidad.
-3. Definir relaciones entre entidades.
-4. Definir restricciones y reglas de integridad.
-5. Validar con Carlos antes de avanzar a M3.
+✅ **Borrador 0.2.0 preparado** con entidades de:
+- Almacén (Producto, Rack, Existencia, Vale, OC, Merma, Pedido, Inventario, Material indirecto, Evidencia).
+- Ventas (Cliente, Cotización, Factura).
+- Compras (Proveedor, Cotización de compra).
+- Logística (Transporte, Guía, Entrega).
+- Calidad (Inspección, No conformidad, Acción correctiva).
+- Contabilidad (Cuenta por cobrar, Cuenta por pagar).
+- RRHH (Empleado, Puesto).
+- Transversales (Usuario, Evento, Auditoría).
+
+🔄 **Pendiente:** Revisión y aprobación de Carlos.
 
 ---
 
@@ -88,7 +93,8 @@ docker compose up -d
 **Decisión de Carlos:** dejar pendiente hasta decidir qué opción de IA se usará.
 
 ### 3. Hello World con n8n
-✅ Código listo. 🔄 **Pendiente:** probar el workflow completo en n8n cuando Docker esté activo.
+✅ Código listo y servicios de Docker corriendo.  
+🔄 **Pendiente:** importar el workflow en n8n. La API REST de n8n requiere configuración adicional (API key) o importación manual por GUI. Se documentó en `docs/HELLO_WORLD.md`.
 
 ### 4. Recomendaciones de mejora y control
 ✅ **Documento creado:** `docs/reports/CJ_OS_CONTROL_AND_IMPROVEMENTS.md`.

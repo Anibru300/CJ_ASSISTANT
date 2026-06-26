@@ -1,5 +1,29 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.22
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Reinicio de Docker Desktop y servicios**:
+  - Docker Desktop se inició correctamente.
+  - Se aplicó la versión fija de n8n: `n8nio/n8n:2.27.4` (la base de datos ya había sido migrada con esta versión; se actualizó `docker-compose.yml` y se agregó nota explicativa).
+  - Todos los contenedores (`cj_postgres`, `cj_redis`, `cj_n8n`) están healthy.
+  - n8n responde correctamente en `http://localhost:5678`.
+- **Auditoría de seguridad de `.env`**:
+  - Se creó `testing/audit_env.py` para verificar si `.env` contiene credenciales reales.
+  - Resultado: no se detectaron credenciales de producción; todos los valores sensibles son placeholders o rutas a archivos de configuración.
+- **Preparación de Ontología Empresarial (M2.5)**:
+  - Actualización de `docs/CJ_OS_ONTOLOGY.md` a versión 0.2.0.
+  - Agregadas entidades de Ventas, Compras, Logística, Calidad, Contabilidad, RRHH y transversales.
+  - Actualizadas relaciones, restricciones transversales y glosario.
+- **Actualización de documentación**:
+  - `docs/HELLO_WORLD.md`: se documentó que la importación del workflow en n8n requiere GUI o API key.
+  - `PENDIENTES.md`: M2.5 como foco actual; Hello World con n8n parcialmente pendiente.
+- **No se crearon tablas de PostgreSQL.**
+- **No se programó código de lógica de negocio nueva.**
+
 ## Versión 0.0.21
 
 **Fecha:** 2026-06-26
