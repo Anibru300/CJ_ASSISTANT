@@ -32,8 +32,14 @@
 
 ## ⚠️ Pendiente de aplicar (IMPORTANTE)
 
-### 1. Reiniciar n8n con la versión fija
-El cambio de versión en `docker-compose.yml` **aún no se aplica** porque el contenedor sigue corriendo con la imagen anterior (`latest`) o Docker no está activo.
+### 1. Cerrar Milestone M2.4 — Auditoría y Aprobación Documental
+La auditoría documental ya se completó. Falta:
+- Corregir inconsistencias menores en Blueprint, Roadmap, README y PROJECT_BIBLE.
+- Resolver con Carlos el destino de `docs/archive/CORE_ARCHITECTURE.md` (ya está archivado; confirmar si se elimina).
+- Obtener aprobación formal de Carlos para cerrar M2.4.
+
+### 2. Reiniciar n8n con la versión fija
+El cambio de versión en `docker-compose.yml` **aún no se aplica** porque Docker no está activo.
 
 **Pasos al reanudar:**
 
@@ -46,25 +52,24 @@ docker compose up -d
 
 > Antes de hacer `docker compose up -d`, verificar que la base de datos actual de n8n no provenga de una versión mayor a `1.84.0`. Si es mayor, hay que actualizar el `docker-compose.yml` a esa versión para evitar errores de migración.
 
-### 2. Corregir inconsistencia en variables de IA
+### 3. Corregir inconsistencia en variables de IA
 - `docs/ENVIRONMENT.md` menciona variables `IA_PROVIDER`, `IA_PROVIDER_API_KEY`, `IA_PROVIDER_MODEL`, etc., que **no están en `.env`**.
 - El `.env` actual tiene `AGENT_ALMACEN_MODEL`, que **no aparece documentado** en `docs/ENVIRONMENT.md`.
 
 **Decisión pendiente:** unificar el proveedor de IA central vs. modelo por agente. Requiere validación de Carlos.
 
-### 3. Corregir inconsistencias documentales del reporte M2.4
-Según el propio reporte M2.4, faltan correcciones en:
-- Número de capas del Core (unificar a 5).
-- Actualizar `SYSTEM_MAP.md`.
-- Revisar `docs/archive/CORE_ARCHITECTURE.md`.
-
 ### 4. Crear un "Hello World" end-to-end
-Validar que la arquitectura propuesta funciona:
-- Workflow de n8n → invoca script Python del Core → devuelve respuesta.
-- Esto confirmaría que n8n puede comunicarse con el futuro código del sistema.
+✅ **Código preparado.** Se crearon:
+- `core/api/hello_world.py` (servidor HTTP del Core).
+- `core/hello_world_cli.py` (versión CLI).
+- `testing/test_hello_world.py` (pruebas automáticas).
+- `infrastructure/n8n/workflows/hello_world.json` (workflow para n8n).
+- `docs/HELLO_WORLD.md` (guía de uso).
+
+🔄 **Pendiente:** probar el workflow completo en n8n cuando Docker esté activo.
 
 ### 5. Revisar espacio en disco
-El disco C: está al ~94% con ~15 GB libres. Monitorear porque el crecimiento de n8n/PostgreSQL puede detener todo.
+✅ **Completado.** Se liberaron ~18 GB. El disco C: ahora está al ~73% con ~62 GB libres.
 
 ---
 

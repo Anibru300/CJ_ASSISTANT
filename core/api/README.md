@@ -10,7 +10,8 @@ Este directorio albergará las **interfaces internas del Core de CJ_OS**. No son
 - Exponer funciones y esquemas de datos que el orquestador (n8n) puede invocar de forma controlada.
 - Garantizar que los conectores y módulos interactúen con el sistema a través de abstracciones estables.
 
-## Restricción actual
+## Estado actual
 
-- Fase M1.2.5: solo documentación y estructura.
-- No se escriben endpoints, controladores ni código de API todavía.
+- Fase M2.4 en cierre.
+- Se crea un **Hello World** en `core/api/hello_world.py` como primera prueba de comunicación entre n8n y el Core.
+- No es una API pública ni definitiva; es una validación técnica de la arquitectura propuesta.

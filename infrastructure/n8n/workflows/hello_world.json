@@ -1,0 +1,86 @@
+{
+  "name": "CJ_OS Hello World",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-node",
+      "name": "When clicking \"Test workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://host.docker.internal:8000/hello",
+        "sendHeaders": false,
+        "sendQuery": false,
+        "options": {}
+      },
+      "id": "http-node",
+      "name": "HTTP Request - Core Hello World",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "name": "cj_os_message",
+              "value": "={{ $json.message }}",
+              "type": "string"
+            },
+            {
+              "name": "cj_os_status",
+              "value": "={{ $json.status }}",
+              "type": "string"
+            },
+            {
+              "name": "cj_os_version",
+              "value": "={{ $json.version }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-node",
+      "name": "Show Response",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.2,
+      "position": [650, 300]
+    }
+  ],
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "connections": {
+    "When clicking \"Test workflow\"": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request - Core Hello World",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request - Core Hello World": {
+      "main": [
+        [
+          {
+            "node": "Show Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}

@@ -1,5 +1,43 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.19
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Creación del Hello World end-to-end** para validar comunicación entre n8n y el Core:
+  - `core/api/hello_world.py`: servidor HTTP minimalista usando solo librería estándar de Python.
+  - `core/hello_world_cli.py`: versión por línea de comandos invocable desde n8n.
+  - `testing/test_hello_world.py`: pruebas automáticas del CLI y del módulo HTTP.
+  - `infrastructure/n8n/workflows/hello_world.json`: workflow exportable para n8n.
+  - `docs/HELLO_WORLD.md`: guía de uso e importación en n8n.
+- **Preparación del proyecto para código Python**:
+  - Creación de `core/__init__.py`, `core/api/__init__.py` y `testing/__init__.py`.
+  - Actualización de `core/api/README.md` y `core/README.md` para reflejar el estado actual.
+- **No se crearon tablas de PostgreSQL.**
+- **No se modificó la base de datos.**
+- **La prueba con n8n queda pendiente** porque Docker no está activo en este momento.
+
+## Versión 0.0.18
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Cierre de inconsistencias documentales detectadas en M2.4**:
+  - Actualización de `docs/ROADMAP.md` para reflejar que M2.4 es **Auditoría y Aprobación Documental** (no Ontología).
+  - Reordenamiento de submilestones posteriores: M2.5 Ontología, M2.6 Eventos, M2.7 Decisiones, M2.8 Reglas, M2.9 BKA.
+  - Actualización de `docs/PROJECT_BIBLE.md`: M2.4 en espera de aprobación de Carlos; agregado M2.5 Ontología Empresarial.
+  - Actualización de `README.md`: estado actual con M1 completado y M2.4 en espera de aprobación.
+  - Actualización de `PENDIENTES.md`: limpieza de disco marcada como completada; M2.4 como foco actual.
+- **Verificación de `docs/CJ_OS_BLUEPRINT.md`**: ya refleja cinco niveles del Core (Memory, Knowledge, Rules, Goals, Behavior) y los 15 componentes del Core; no requirió ajustes.
+- **Verificación de `docs/DECISIONS.md`**: ya registra decisiones de M2.2 (Arquitectura Cognitiva), M2.3 (Filosofía) y la reorganización de M2; no requirió ajustes mayores.
+- **No se programó código.**
+- **No se crearon tablas de PostgreSQL.**
+- **No se modificó la base de datos.**
+- **No se reinició n8n** (Docker no estaba disponible).
+
 ## Versión 0.0.17
 
 **Fecha:** 2026-06-26

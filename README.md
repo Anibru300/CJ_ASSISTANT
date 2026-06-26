@@ -19,7 +19,8 @@ Crear una plataforma centralizada que reciba información desde múltiples canal
 ## Estado actual
 
 - **Arquitectura CJ_OS v1.0:** ✅ Aprobada por Carlos.
-- **Milestone M1 — Infraestructura:** 🔄 En progreso.
+- **Milestone M1 — Infraestructura:** ✅ Completado.
+- **Milestone M2.4 — Auditoría y Aprobación Documental:** 🔄 En espera de aprobación de Carlos.
 
 ## Documentación
 

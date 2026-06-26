@@ -40,7 +40,7 @@ core/
 └── orchestrator/     # Configuración base para n8n
 ```
 
-## Los cuatro niveles del criterio de CJ_OS
+## Los cinco niveles del criterio de CJ_OS
 
 | Nivel | Pregunta que responde | Ejemplo |
 |-------|----------------------|---------|
@@ -53,4 +53,5 @@ core/
 ## Estado
 
 - Fase M2.1 completada: estructura del Blueprint y del Core actualizada.
-- Aún no se escribe código ni se exponen APIs.
+- Fase M2.4 en cierre: documentación validada y lista para aprobación de Carlos.
+- **Hello World end-to-end en preparación:** se creará el primer script del Core como prueba de comunicación con n8n.

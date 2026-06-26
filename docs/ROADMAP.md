@@ -127,7 +127,26 @@ Este roadmap sigue el orden lógico de empresas grandes: **diseño funcional ant
 
 ---
 
-## Milestone M2.4 - Ontología Empresarial ⏳
+## Milestone M2.4 - Auditoría y Aprobación Documental 🔄
+
+**Objetivo:** Validar que la documentación de arquitectura y diseño sea clara, consistente y suficiente antes de construir el Modelo de Datos.
+
+### Entregable principal
+
+- **`docs/reports/M2.4_documentation_audit.md`** — reporte de auditoría documental.
+
+### Actividades
+
+- Revisar consistencia entre Blueprint, Filosofía, Roadmap, Decisiones, System Map y Core Architecture.
+- Corregir referencias desactualizadas (número de capas, componentes del Core, estados de milestones).
+- Decidir destino de documentos obsoletos o redundantes.
+- Obtener aprobación formal de Carlos para cerrar M2.4.
+
+**Estado:** Auditoría completada. En espera de aprobación de Carlos.
+
+---
+
+## Milestone M2.5 - Ontología Empresarial ⏳
 
 **Objetivo:** Definir qué existe en 3P, cómo se llama, qué significa, qué atributos tiene y qué restricciones tiene cada entidad. Será la fuente semántica del modelo de datos.
 
@@ -147,7 +166,7 @@ Este roadmap sigue el orden lógico de empresas grandes: **diseño funcional ant
 
 ---
 
-## Milestone M2.5 - Catálogo de Eventos ⏳
+## Milestone M2.6 - Catálogo de Eventos ⏳
 
 **Objetivo:** Documentar todos los eventos de negocio que alimentarán el Event Bus, n8n, los agentes y la auditoría.
 
@@ -167,7 +186,7 @@ Este roadmap sigue el orden lógico de empresas grandes: **diseño funcional ant
 
 ---
 
-## Milestone M2.6 - Catálogo de Decisiones ⏳
+## Milestone M2.7 - Catálogo de Decisiones ⏳
 
 **Objetivo:** Documentar las decisiones reales que ocurren en cada dominio: qué información necesitan, quién las toma y qué resultados pueden tener.
 
@@ -187,7 +206,7 @@ Este roadmap sigue el orden lógico de empresas grandes: **diseño funcional ant
 
 ---
 
-## Milestone M2.7 - Catálogo de Reglas ⏳
+## Milestone M2.8 - Catálogo de Reglas ⏳
 
 **Objetivo:** Documentar las reglas de negocio de forma explícita, separada y accionable. Cada regla será una futura validación automática.
 
@@ -207,7 +226,7 @@ Este roadmap sigue el orden lógico de empresas grandes: **diseño funcional ant
 
 ---
 
-## Milestone M2.8 - Business Knowledge Acquisition (BKA) ⏳
+## Milestone M2.9 - Business Knowledge Acquisition (BKA) ⏳
 
 **Nombre alternativo:** Fase de Adquisición del Conocimiento Empresarial.
 
