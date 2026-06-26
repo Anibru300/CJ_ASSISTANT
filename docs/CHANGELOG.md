@@ -1,5 +1,27 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.28
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Aprobación de M3 — Modelo de Datos por Carlos**:
+  - Carlos aprobó `docs/DATA_MODEL.md` v0.1.2 el 26/06/2026.
+  - Se creó `docs/reports/M3_approval_request.md` como registro formal de aprobación.
+  - `docs/PROJECT_BIBLE.md`: M3 marcado como ✅ Completado y aprobado por Carlos.
+  - `docs/ROADMAP.md`: M3 marcado como ✅ Completado y aprobado por Carlos.
+- **Generación e implementación del esquema de PostgreSQL**:
+  - Se generó `infrastructure/database/schema/001_initial_schema.sql` a partir de `docs/DATA_MODEL.md`.
+  - Se ordenaron las tablas por dependencias para evitar errores de claves foráneas.
+  - Se creó la base de datos `cj_os` en el servidor PostgreSQL.
+  - Se ejecutó el script y se crearon **19 tablas**, **23 claves foráneas** y **16 índices** sin errores.
+  - Se creó `docs/reports/M3_database_validation.md` con evidencia de validación.
+- **Actualización de `PENDIENTES.md`**:
+  - M3 marcado como implementado y validado.
+  - Foco actual reordenado: M4 — Integraciones, owner user en n8n y KES-Pilot.
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.27
 
 **Fecha:** 2026-06-26

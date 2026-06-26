@@ -330,19 +330,20 @@ Cada sesión extraerá conocimiento experto usando la ficha maestra del dominio:
 
 ---
 
-## Milestone M3 - Modelo de Datos ⏳
+## Milestone M3 - Modelo de Datos ✅
 
-**Objetivo:** Traducir la Ontología, el Knowledge Graph y el conocimiento adquirido en M2.8 a un modelo de datos estructurado.
+**Objetivo:** Traducir la Ontología aprobada y el conocimiento adquirido de la operación real de almacén a un modelo de datos estructurado.
 
 ### Actividades
 
-- Diseñar esquema de PostgreSQL basado en el Blueprint y el Modelo Operativo validado.
+- Diseñar esquema de PostgreSQL basado en el Blueprint, la Ontología y el análisis de `BD_ALMACEN_3P`.
 - Definir entidades, relaciones, índices y restricciones.
 - Crear tablas base.
 - Configurar respaldos automáticos.
 - Validar persistencia en `runtime/database/`.
 
-**Estado:** Pendiente. No iniciar hasta aprobación de Ontología + Knowledge Graph + Catálogos de Eventos/Decisiones/Reglas + Modelo Operativo + BKA.
+**Estado:** ✅ Completado. Aprobado por Carlos el 26/06/2026.  
+*Nota: Se ejecutó de forma pragmática tras aprobar M2.5, usando como insumo principal la base de datos real de almacén y las respuestas del experto de operación.*
 
 ---
 

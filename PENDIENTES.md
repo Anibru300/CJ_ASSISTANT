@@ -63,11 +63,19 @@
     - 🔄 **Pendiente:** ejecutar la sesión con Carlos y el experto de Almacén.
 
 12. **M3 — Modelo de Datos**:
-    - Se preparó borrador `docs/DATA_MODEL.md` v0.1.2.
-    - Se ajustó con hallazgos del análisis de `BD_ALMACEN_3P`.
-    - Se incorporaron respuestas de Carlos sobre sub-almacenes, cantidad viva, existencias y entradas desde SAE.
-    - Se creó `docs/reports/BD_ALMACEN_3P_analysis.md`.
-    - 🔄 **Pendiente:** aprobación de Carlos.
+    - ✅ **Aprobado por Carlos el 26/06/2026.**
+    - Se generó `infrastructure/database/schema/001_initial_schema.sql`.
+    - Se creó la base de datos `cj_os` en PostgreSQL.
+    - Se crearon 19 tablas, 23 claves foráneas y 16 índices.
+    - Se validó en `docs/reports/M3_database_validation.md`.
+
+---
+
+## 🎯 Foco actual
+
+1. **Iniciar M4 — Integraciones** (SAE y Excel de almacén).
+2. **Crear usuario owner en n8n** para ejecutar workflows desde GUI.
+3. **Ejecutar KES-Pilot** de entrada de mercancía.
 
 ---
 
