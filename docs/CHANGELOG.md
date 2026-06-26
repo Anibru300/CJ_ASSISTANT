@@ -1,5 +1,29 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.31
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Primer análisis de reconciliación vales-facturas**:
+  - Se creó `workspace/almacen/analysis/vale_factura_reconciler.py`.
+  - El script lee `BD_ALMACEN_3P_20260625.xlsx` y detecta:
+    - Vales con múltiples facturas en `NO_FACTURA`.
+    - Líneas con comentarios de facturación parcial.
+    - Líneas donde la cantidad original no coincide con cantidad viva + ajustada y no hay factura registrada.
+    - Vales abiertos con cantidad viva total = 0.
+    - Vales cerrados con cantidad viva > 0.
+  - Resultados del análisis:
+    - 398 líneas sin factura registrada pero con diferencia entre cantidad original y cantidad viva/ajustada.
+    - 87 líneas con indicios de facturación parcial en comentarios.
+    - 4 vales abiertos con cantidad viva total = 0.
+    - 1 línea con múltiples facturas en `NO_FACTURA`.
+  - Reporte generado: `workspace/almacen/reports/vale_factura_hallazgos.xlsx`.
+- **Actualización de `PENDIENTES.md`**:
+  - Análisis de reconciliación marcado como generado; pendiente revisión de Carlos.
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.30
 
 **Fecha:** 2026-06-26

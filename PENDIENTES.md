@@ -74,9 +74,10 @@
 ## 🎯 Foco actual
 
 1. **✅ KES-Pilot** de entrada de mercancía completada.
-2. **Actualizar Business Dictionary y Knowledge Coverage Matrix** con términos del KES-Pilot.
-3. **Iniciar M4 — Integraciones** (SAE y Excel de almacén).
-4. **Crear usuario owner en n8n** para ejecutar workflows desde GUI.
+2. **✅ Business Dictionary y Knowledge Coverage Matrix** actualizados con términos del KES-Pilot.
+3. **Análisis de reconciliación vales-facturas** generado; pendiente revisión de Carlos.
+4. **Iniciar M4 — Integraciones** (SAE y Excel de almacén).
+5. **Crear usuario owner en n8n** para ejecutar workflows desde GUI.
 
 ---
 
