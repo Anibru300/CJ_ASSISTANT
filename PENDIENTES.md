@@ -55,22 +55,24 @@
    - Se actualizó `docs/CJ_OS_ONTOLOGY.md` a versión 0.2.0 con entidades de todos los módulos.
    - 🔄 **Pendiente:** aprobación de Carlos.
 
-10. **KES-Pilot**:
+10. **M2.5 — Ontología Empresarial**:
+    - ✅ **Aprobado por Carlos el 26/06/2026.**
+
+11. **KES-Pilot**:
     - Se preparó `docs/reports/KES-Pilot_entrada_mercancia.md`.
     - 🔄 **Pendiente:** ejecutar la sesión con Carlos y el experto de Almacén.
 
-11. **M3 — Modelo de Datos**:
+12. **M3 — Modelo de Datos**:
     - Se preparó borrador `docs/DATA_MODEL.md`.
-    - 🔄 **Pendiente:** aprobación de Carlos tras aprobar la Ontología.
+    - 🔄 **Pendiente:** aprobación de Carlos.
 
 ---
 
 ## 🎯 Foco actual
 
-1. **Aprobar Ontología Empresarial (M2.5)** con Carlos.
-2. **Crear usuario owner en n8n** para poder ejecutar workflows y usar la API REST.
-3. **Ejecutar KES-Pilot** de entrada de mercancía.
-4. **Aprobar Modelo de Datos (M3)** y crear tablas en PostgreSQL.
+1. **Crear usuario owner en n8n** para poder ejecutar workflows y usar la API REST.
+2. **Ejecutar KES-Pilot** de entrada de mercancía.
+3. **Aprobar Modelo de Datos (M3)** y crear tablas en PostgreSQL.
 
 ---
 

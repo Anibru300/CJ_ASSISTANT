@@ -1,5 +1,23 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.24
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Aprobación de M2.5 — Ontología Empresarial por Carlos**:
+  - Carlos revisó y aprobó `docs/CJ_OS_ONTOLOGY.md` v0.2.0 el 26/06/2026.
+  - Se creó `docs/reports/M2.5_approval_request.md` como registro formal de aprobación.
+  - `docs/PROJECT_BIBLE.md`: M2.5 marcado como ✅ Completado y aprobado por Carlos.
+  - `docs/ROADMAP.md`: M2.5 marcado como ✅ Completado y aprobado por Carlos.
+- **Actualización de `PENDIENTES.md`**:
+  - M2.5 marcado como aprobado.
+  - Foco actual reordenado: crear owner user en n8n, ejecutar KES-Pilot y avanzar a M3.
+- **No se ejecutó el workflow en n8n** (rehén: falta crear owner user).
+- **No se crearon tablas de PostgreSQL productivas** (rehén: aprobación de M3).
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.23
 
 **Fecha:** 2026-06-26

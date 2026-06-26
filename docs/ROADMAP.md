@@ -162,7 +162,7 @@ Este roadmap sigue el orden lógico de empresas grandes: **diseño funcional ant
 - Definir restricciones y reglas de integridad.
 - Validar con Carlos antes de avanzar.
 
-**Estado:** Pendiente.
+**Estado:** ✅ Completado. Aprobado por Carlos el 26/06/2026.
 
 ---
 
