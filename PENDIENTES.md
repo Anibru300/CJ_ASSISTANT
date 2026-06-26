@@ -75,9 +75,10 @@
 
 1. **✅ KES-Pilot** de entrada de mercancía completada.
 2. **✅ Business Dictionary y Knowledge Coverage Matrix** actualizados con términos del KES-Pilot.
-3. **Análisis de reconciliación vales-facturas** generado; pendiente revisión de Carlos.
-4. **Iniciar M4 — Integraciones** (SAE y Excel de almacén).
-5. **Crear usuario owner en n8n** para ejecutar workflows desde GUI.
+3. **Investigación de Aspel-SAE 9.0** en curso; pendiente autorización de Carlos para copia segura del .fdb.
+4. **Análisis de reconciliación vales-facturas** generado; pendiente revisión de Carlos.
+5. **Iniciar M4 — Integraciones** (SAE y Excel de almacén).
+6. **Crear usuario owner en n8n** para ejecutar workflows desde GUI.
 
 ---
 

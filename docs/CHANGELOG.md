@@ -1,5 +1,24 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.32
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Investigación inicial de Aspel-SAE 9.0**:
+  - Se creó `docs/reports/SAE_investigation_plan.md` con:
+    - Compromiso de seguridad: solo lectura, copias de respaldo, sin modificar SAE.
+    - Hallazgos sobre motor Firebird y estructura de tablas.
+    - Tablas relevantes identificadas: `INVE01`, `FACT01`, `PEDIDO01`, `CLIE01`, `PROV01`, `COMP01`, `MULT01`, `DOCTOSIGF`, etc.
+    - Herramientas de conexión evaluadas: `fdb`, `sqlalchemy-firebird`, `ISQL`.
+    - Método seguro recomendado para explorar la base de datos.
+    - Preguntas para Carlos antes de continuar.
+- **Actualización de `PENDIENTES.md`**:
+  - Investigación de SAE marcada como en curso; foco actual.
+- **No se copió ni consultó la base de datos de SAE.**
+- **No se programó código de lógica de negocio real.**
+
 ## Versión 0.0.31
 
 **Fecha:** 2026-06-26
