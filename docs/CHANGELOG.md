@@ -1,5 +1,26 @@
 # Changelog - CJ_Assistant
 
+## Versión 0.0.21
+
+**Fecha:** 2026-06-26
+
+### Cambios realizados
+
+- **Aprobación de M2.4 por Carlos**:
+  - `docs/reports/M2.4_approval_request.md` firmado/aprobado por Carlos el 26/06/2026.
+  - `docs/PROJECT_BIBLE.md`: M2.4 marcado como ✅ Completado.
+  - `docs/ROADMAP.md`: M2.4 marcado como ✅ Completado.
+- **Aplicación de decisiones de Carlos**:
+  - Eliminación de `docs/archive/CORE_ARCHITECTURE.md` (decisión de Carlos).
+  - Confirmación del término oficial "módulos" para las áreas de negocio.
+  - Variables de IA dejadas como pendiente hasta decidir proveedor.
+- **Nuevo foco del proyecto**: Milestone M2.5 — Ontología Empresarial.
+- **Actualización de `PENDIENTES.md`**: M2.4 cerrado; M2.5 como foco actual.
+- **Creación de `docs/reports/CJ_OS_CONTROL_AND_IMPROVEMENTS.md`**: recomendaciones de control, seguridad, monitoreo, calidad del conocimiento y plan de acción priorizado, solicitadas por Carlos.
+- **No se programó código nuevo.**
+- **No se crearon tablas de PostgreSQL.**
+- **No se modificó la base de datos.**
+
 ## Versión 0.0.20
 
 **Fecha:** 2026-06-26

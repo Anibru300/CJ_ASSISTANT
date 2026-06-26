@@ -101,7 +101,7 @@ El proyecto se desarrolla por **Milestones** con validación obligatoria entre c
 | M2 | Arquitectura Funcional | ✅ Completado | Definir qué es CJ_OS antes de programar. |
 | M2.2 | Arquitectura Cognitiva | ✅ Completado | Definir cómo piensa CJ_OS antes del modelo de datos. |
 | M2.3 | Filosofía y Constitución | ✅ Completado | Definir el ADN y comportamiento de CJ_OS. |
-| M2.4 | Auditoría y Aprobación Documental | 🔄 En espera de aprobación de Carlos | Validar documentación antes del Modelo de Datos. |
+| M2.4 | Auditoría y Aprobación Documental | ✅ Completado (aprobado por Carlos el 26/06/2026) | Validar documentación antes del Modelo de Datos. |
 | M2.5 | Ontología Empresarial | ⏳ Pendiente | Definir entidades, atributos y relaciones de 3P. |
 | M3 | Modelo de Datos | ⏳ Pendiente | Traducir el diseño funcional a tablas de PostgreSQL. |
 | M4 | Integraciones | ⏳ Pendiente | Conectar sistemas externos (WhatsApp, Outlook, SAE, etc.). |

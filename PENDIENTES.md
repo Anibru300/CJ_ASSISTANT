@@ -20,28 +20,54 @@
 3. **Limpieza de estructura**:
    - Se eliminaron las carpetas numeradas vacías (`01_n8n/`, `04_google_drive/`, `05_onedrive/`, `06_sae/`, `07_excel_almacen/`, `08_whatsapp/`, `09_prompts/`, `10_pruebas/`).
    - Motivo: duplicaban la estructura real (`ai/`, `connectors/`, `modules/`, `workspace/`, etc.) y generaban confusión.
-   - La información sobre su propósito histórico queda en este archivo y en `docs/CHANGELOG.md`.
 
 4. **Repositorio Git y GitHub**:
    - Se inicializó el repositorio local.
    - Se configuró el remoto `origin` apuntando a `https://github.com/Anibru300/CJ_ASSISTANT`.
    - Se realizó el commit inicial y se subió el proyecto.
-   - Verificación: `.env`, `runtime/`, `02_backups/` y `03_logs/` quedan fuera del repositorio gracias a `.gitignore`.
+
+5. **Limpieza de disco local C:**:
+   - Se liberaron ~18 GB.
+   - El disco C: pasó de ~94% a ~73% de uso.
+
+6. **Cierre de Milestone M2.4 — Auditoría y Aprobación Documental**:
+   - Se corrigieron inconsistencias documentales entre Blueprint, Roadmap, README, PROJECT_BIBLE y Core README.
+   - Se preparó el paquete de aprobación `docs/reports/M2.4_approval_request.md`.
+   - **Carlos aprobó M2.4 el 26/06/2026.**
+   - Según decisión de Carlos, se eliminó `docs/archive/CORE_ARCHITECTURE.md`.
+   - El término oficial para las áreas de negocio es **"módulos"** (carpetas `modules/` y `workspace/`).
+
+7. **Hello World end-to-end**:
+   - Se creó `core/api/hello_world.py` (servidor HTTP del Core).
+   - Se creó `core/hello_world_cli.py` (versión CLI).
+   - Se crearon pruebas en `testing/test_hello_world.py`.
+   - Se creó el workflow importable en `infrastructure/n8n/workflows/hello_world.json`.
+   - Se validó localmente con `curl` y las pruebas unitarias pasan.
 
 ---
 
-## ⚠️ Pendiente de aplicar (IMPORTANTE)
+## 🎯 Foco actual: Milestone M2.5 — Ontología Empresarial
 
-### 1. Cerrar Milestone M2.4 — Auditoría y Aprobación Documental
-✅ **Paquete de aprobación preparado** en `docs/reports/M2.4_approval_request.md`.
+**Objetivo:** Definir qué existe en 3P, cómo se llama, qué significa, qué atributos tiene y qué restricciones tiene cada entidad. Será la fuente semántica del Modelo de Datos (M3).
 
-🔄 **Pendiente:** Carlos debe revisar y aprobar el paquete. Para facilitar la revisión:
-- Revisar `docs/reports/M2.4_approval_request.md` (resumen ejecutivo).
-- Si es necesario, profundizar en `docs/reports/M2.4_documentation_audit.md` (auditoría detallada).
-- Revisar los documentos maestros: `CJ_OS_BLUEPRINT.md`, `CJ_OS_PHILOSOPHY.md`, `ROADMAP.md`, `PROJECT_BIBLE.md`.
-- Firmar/aprobar la sección 8 de `M2.4_approval_request.md`.
+### Entregable principal
 
-### 2. Reiniciar n8n con la versión fija
+- `docs/CJ_OS_ONTOLOGY.md`
+
+### Actividades pendientes
+
+1. Identificar entidades por módulo de negocio:
+   - Almacén, Ventas, Compras, Logística, Calidad, SGC, RRHH, Gerencia.
+2. Definir atributos de cada entidad.
+3. Definir relaciones entre entidades.
+4. Definir restricciones y reglas de integridad.
+5. Validar con Carlos antes de avanzar a M3.
+
+---
+
+## ⚠️ Otros pendientes
+
+### 1. Reiniciar n8n con la versión fija
 El cambio de versión en `docker-compose.yml` **aún no se aplica** porque Docker no está activo.
 
 **Pasos al reanudar:**
@@ -55,24 +81,19 @@ docker compose up -d
 
 > Antes de hacer `docker compose up -d`, verificar que la base de datos actual de n8n no provenga de una versión mayor a `1.84.0`. Si es mayor, hay que actualizar el `docker-compose.yml` a esa versión para evitar errores de migración.
 
-### 3. Corregir inconsistencia en variables de IA
+### 2. Variables de IA
 - `docs/ENVIRONMENT.md` menciona variables `IA_PROVIDER`, `IA_PROVIDER_API_KEY`, `IA_PROVIDER_MODEL`, etc., que **no están en `.env`**.
 - El `.env` actual tiene `AGENT_ALMACEN_MODEL`, que **no aparece documentado** en `docs/ENVIRONMENT.md`.
 
-**Decisión pendiente:** unificar el proveedor de IA central vs. modelo por agente. Requiere validación de Carlos.
+**Decisión de Carlos:** dejar pendiente hasta decidir qué opción de IA se usará.
 
-### 4. Crear un "Hello World" end-to-end
-✅ **Código preparado.** Se crearon:
-- `core/api/hello_world.py` (servidor HTTP del Core).
-- `core/hello_world_cli.py` (versión CLI).
-- `testing/test_hello_world.py` (pruebas automáticas).
-- `infrastructure/n8n/workflows/hello_world.json` (workflow para n8n).
-- `docs/HELLO_WORLD.md` (guía de uso).
+### 3. Hello World con n8n
+✅ Código listo. 🔄 **Pendiente:** probar el workflow completo en n8n cuando Docker esté activo.
 
-🔄 **Pendiente:** probar el workflow completo en n8n cuando Docker esté activo.
+### 4. Recomendaciones de mejora y control
+✅ **Documento creado:** `docs/reports/CJ_OS_CONTROL_AND_IMPROVEMENTS.md`.
 
-### 5. Revisar espacio en disco
-✅ **Completado.** Se liberaron ~18 GB. El disco C: ahora está al ~73% con ~62 GB libres.
+🔄 **Pendiente:** Carlos revisa y aprueba las recomendaciones, o indica cuáles implementar primero.
 
 ---
 
@@ -81,7 +102,7 @@ docker compose up -d
 1. ¿El `.env` actual contiene credenciales de producción reales o solo de desarrollo?
 2. ¿El hardware actual (i3, 8 GB RAM) será el entorno definitivo o hay plan de escalar?
 3. ¿Cuándo se espera iniciar la fase de código (M3 / Modelo de Datos)?
-4. ¿Se usará un proveedor de IA central (`IA_PROVIDER`) o modelo por agente (`AGENT_*_MODEL`)?
+4. ¿Se elimina también `docs/archive/ARCHITECTURE.md` o se mantiene como histórico?
 
 ---
 
@@ -103,4 +124,4 @@ docker compose ps
 
 ---
 
-*Última actualización: 2026-06-26 por Kimi (revisión con Carlos y Francisco).*
+*Última actualización: 2026-06-26 por Kimi (aprobación de M2.4 por Carlos).*

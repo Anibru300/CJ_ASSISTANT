@@ -142,7 +142,7 @@ Este roadmap sigue el orden lógico de empresas grandes: **diseño funcional ant
 - Decidir destino de documentos obsoletos o redundantes.
 - Obtener aprobación formal de Carlos para cerrar M2.4.
 
-**Estado:** Auditoría completada. En espera de aprobación de Carlos.
+**Estado:** ✅ Completado. Aprobado por Carlos el 26/06/2026.
 
 ---
 
