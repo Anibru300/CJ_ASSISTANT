@@ -1,0 +1,40 @@
+# Configuración de aplicación - ambiente development
+environment: development
+log_level: info
+timezone: America/Mexico_City
+
+modules:
+  almacen: true
+  ventas: false
+  compras: false
+  calidad: false
+  sgc: true
+  rrhh: false
+  logistica: false
+  gerencia: false
+
+agents:
+  almacen:
+    enabled: true
+    model: kimi-latest
+  ventas:
+    enabled: false
+    model: kimi-latest
+  compras:
+    enabled: false
+    model: kimi-latest
+  calidad:
+    enabled: false
+    model: kimi-latest
+  sgc:
+    enabled: false
+    model: kimi-latest
+  rrhh:
+    enabled: false
+    model: kimi-latest
+  logistica:
+    enabled: false
+    model: kimi-latest
+  gerencia:
+    enabled: false
+    model: kimi-latest

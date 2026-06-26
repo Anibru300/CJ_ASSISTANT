@@ -1,0 +1,76 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: cj_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-cj_assistant}
+      POSTGRES_USER: ${POSTGRES_USER:-cj_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-cambiar_en_produccion}
+    volumes:
+      - ../../runtime/database/postgres:/var/lib/postgresql/data
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    networks:
+      - cj_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cj_user} -d ${POSTGRES_DB:-cj_assistant}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: cj_redis
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD:-cambiar_en_produccion}
+    volumes:
+      - ../../runtime/database/redis:/data
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    networks:
+      - cj_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "${REDIS_PASSWORD:-cambiar_en_produccion}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  n8n:
+    # Version fija para evitar cambios inesperados. Validar antes de actualizar.
+    image: n8nio/n8n:1.84.0
+    container_name: cj_n8n
+    restart: unless-stopped
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=${N8N_BASIC_AUTH_ACTIVE:-true}
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER:-admin}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD:-cambiar_en_produccion}
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY:-cambiar_por_clave_segura_de_32_chars}
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB:-cj_assistant}
+      - DB_POSTGRESDB_USER=${POSTGRES_USER:-cj_user}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD:-cambiar_en_produccion}
+      - WEBHOOK_URL=${WEBHOOK_URL:-http://localhost:5678/}
+      - GENERIC_TIMEZONE=${TIMEZONE:-America/Mexico_City}
+      - TZ=${TIMEZONE:-America/Mexico_City}
+    ports:
+      - "${N8N_PORT:-5678}:5678"
+    volumes:
+      - ../../runtime/n8n:/home/node/.n8n
+    networks:
+      - cj_network
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+networks:
+  cj_network:
+    name: ${DOCKER_NETWORK_NAME:-cj_network}
+    driver: bridge
+    ipam:
+      config:
+        - subnet: ${DOCKER_SUBNET:-172.20.0.0/16}

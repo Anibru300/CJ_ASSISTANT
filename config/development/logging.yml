@@ -1,0 +1,7 @@
+# Configuración de logging - ambiente development
+level: info
+path: ./runtime/logs
+format: json
+rotation:
+  max_size_mb: 10
+  max_files: 5

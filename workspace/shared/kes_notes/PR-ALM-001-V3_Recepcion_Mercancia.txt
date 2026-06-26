@@ -1,0 +1,350 @@
+CÓDIGO:
+
+PR-ALM-001
+
+ÁREA:
+
+Almacen
+
+
+
+NOMBRE:
+
+RECEPCIÓN DE MERCANCÍA
+
+VERSIÓN:
+
+3
+
+
+
+Realizado por: Ing. Carlos Urbina
+
+FECHA:
+
+20/04/2026
+
+
+
+
+
+PR-ALM-001
+RECEPCIÓN DE MERCANCÍA
+
+
+
+1. OBJETIVO
+
+Establecer el procedimiento detallado para la recepción de mercancía proveniente de proveedores, asegurando que los materiales recibidos cumplan con las especificaciones de calidad, cantidad y documentación requeridas. Este procedimiento garantiza la trazabilidad desde el momento del arribo hasta la aceptación formal de la mercancía.
+
+
+
+2. ALCANCE
+
+Este procedimiento aplica a toda mercancía recibida de proveedores nacionales e internacionales, incluyendo materias primas, productos terminados, material de empaque, materiales indirectos, equipos y herramientas. Aplica a todo el personal del área de Almacén y áreas relacionadas involucradas en el proceso de recepción.
+
+
+
+3. RESPONSABLES
+
+3.1 Jefe de Almacén
+
+Supervisar y autorizar todas las recepciones de mercancía.
+
+Coordinar la preparación del área de recepción.
+
+Aprobar o rechazar mercancía con desviaciones.
+
+Gestionar comunicación con Logística sobre discrepancias.
+
+Firmar documentos de recepción conforme.
+
+3.2 Auxiliar de Almacén
+
+Ejecutar la recepción física de la mercancía.
+
+Realizar verificación documental completa.
+
+Ejecutar inspección física según checklist.
+
+Generar reporte de ingreso y desfase si aplica.
+
+Acomodar mercancía temporalmente.
+
+3.3 Logística
+
+Iniciar el procedimiento notificando arribo de mercancía.
+
+Comunicar fecha y hora estimada de llegada a Almacén y Ventas y Facturación.
+
+Coordinar con proveedores la entrega.
+
+Recibir reportes de desfase o discrepancias de Almacén.
+
+Gestionar con proveedores las no conformidades detectadas.
+
+
+
+4. DESARROLLO DETALLADO DEL PROCESO
+
+4.1 Notificación de Arribo
+
+El proceso inicia cuando Logística recibe confirmación del proveedor sobre el envio de mercancía. Logística debe notificar de inmediato:
+
+Enviar correo electrónico o mensaje oficial al Jefe de Almacén.
+
+Copiar a Ventas y Facturación para coordinación.
+
+Especificar fecha y hora estimada de llegada.
+
+Indicar tipo de mercancía, cantidad estimada y proveedor.
+
+Adjuntar orden de compra y factura. 
+
+NOTA: La notificación debe realizarse con al menos 24 horas de anticipación cuando sea posible, o de inmediato si es recepción urgente.
+
+
+
+4.2 Preparación para Recepción
+
+Una vez notificado, el Jefe de Almacén debe coordinar:
+
+Verificar disponibilidad de espacio en zona de recepción.
+
+Asignar Auxiliar de Almacén para la recepción.
+
+Preparar equipo de seguridad personal (chalecos, cascos si aplica).
+
+Tener lista cámara fotográfica para evidencias en (caso de que sea Trahiler, contenedores o comiones).
+
+Coordinar equipo de carga si es necesario (montacargas, carros, patín).
+
+
+
+
+
+4.3 Verificación Documental
+
+Al momento de la llegada del transporte, el Auxiliar de Almacén debe solicitar y revisar:
+
+Factura del proveedor: verificar datos fiscales correctos, folio, fecha y descripción de productos.
+
+Nota de remisión o carta porte: documento que ampare el transporte de la mercancía.
+
+Orden de compra: comparar contra la orden de compra emitida por Logística.
+
+Certificados de calidad: si aplica, solicitar certificados de calidad o análisis de laboratorio.
+
+NOTA: Si falta algún documento, registrar en observaciones y notificar al Jefe de Almacén antes de continuar.
+
+4.4 Inspección Física de la Mercancía
+
+En la zona de recepción, el Auxiliar debe:
+
+Verificar estado físico del empaque: sin golpes, humedad, aberturas o daños visibles.
+
+Contar físicamente todas las piezas, bultos, cajas o tarimas.
+
+Verificar sellos de seguridad si los tiene (deben estar intactos).
+
+Abrir muestras representativas para verificar contenido si es necesario.
+
+Verificar etiquetado del proveedor: códigos, descripciones, lotes.
+
+Comparar físicamente contra la factura/nota de remisión.
+
+4.5 Manejo de Desfase o Diferencia
+
+Si se detectan discrepancias entre lo solicitado y lo recibido:
+
+DETENER el proceso de recepción inmediatamente.
+
+Documentar en formato FO-ALM-013 Reporte de No Conformidad.
+
+Tomar fotografías de la discrepancia  (si es que existe).
+
+Notificar de inmediato al Jefe de Almacén.
+
+El Jefe de Almacén notifica a Logística y Ventas y facturación para gestión con proveedor.
+
+Separar la mercancía en zona de recepción.
+
+Esperar instrucciones de Logística: aceptar con nota, rechazar o solicitar reposición.
+
+Registrar la decisión tomada en el reporte de recepción.
+
+NOTA: NINGUNA mercancía con discrepancia puede continuar al ingreso sin autorización escrita del Jefe de Almacén y Logística.
+
+4.6 Registro de Recepción Conforme
+
+Para mercancía que cumple con todos los requisitos:
+
+Llenar completamente el formato FO-ALM-003 Check list Recepción.
+
+Imprimir etiquetas de identificación temporal.
+
+Acomodar mercancía en zona temporal.
+
+Preparar reporte de ingreso para Logística.
+
+Notificar al Jefe de Almacén que la recepción esta completa.
+
+4.7 Tiempos y Seguimiento
+
+Recepción documental: Máximo 15 minutos.
+
+Inspección física: Dependiendo del volumen.
+
+Notificación a Logística: Inmediata si hay desfase.
+
+4.8 Recepción de Devoluciones de Préstamo
+
+Cuando material prestado o entregado a consignación del cliente regresa al almacén, se aplica el siguiente subproceso:
+
+4.8.1 Notificación de Devolución
+
+El vendedor o cliente notifica a Ventas y facturación para que se avise al Jefe de Almacén la devolución del material. Se coordina fecha y hora de recepción. NO es necesario avisar a Logística.
+
+4.8.2 Recepción Física
+
+El Auxiliar de Almacén recibe el material en la zona de recepción y verifica:
+
+Identificación del material: código, descripción y cantidad devuelta.
+
+Estado físico: sin daños, sin golpes, limpio y en condiciones de reutilización.
+
+Funcionalidad: que el material siga operando correctamente.
+
+Empaque y accesorios: que traiga todo lo que se entregó originalmente.
+
+Si hay un vale, cerrarlo.
+
+Nota. Si el material NO cumple con alguno de los criterios, se documenta la novedad en el FO-ALM-013 (Reporte de No Conformidad), se notifica al Jefe de Almacén y se informa a Ventas y Facturación para decisión.
+
+Grabar un video de la recepción de mercancía, adjuntándolo a un correo para respaldo, con copia a ventas y facturación, y gerencia.
+
+
+
+4.8.3 Cierre del Vale
+
+Si la recepción es conforme:
+
+El Jefe de Almacén cierra el vale de salida original (FO-ALM-012), anotando fecha de devolución y estado del material.
+
+Se reubica el material en su zona de almacenamiento correspondiente (PR-ALM-003).
+
+4.8.4 Notificación a Ventas y Facturación
+
+Almacén notifica a VyF que el material fue devuelto y el vale cerrado, mediante correo electrónico o mensaje oficial. VyF actualiza su control de préstamos y consignas.
+
+5. DOCUMENTOS Y REGISTROS
+
+FO-ALM-003: Check list Recepción.
+
+FO-ALM-013: Reporte de No Conformidad.
+
+Archivo de fotografías: evidencia fotográfica de estado de empaque (guardar por 1 ano).
+
+Registro en Excel: Control de entradas de almacén.
+
+PR-ALM-002: Procedimiento de Ingreso al Almacén (siguiente paso).
+
+6. CRITERIOS DE ACEPTACION Y RECHAZO
+
+6.1 Aceptación Inmediata
+
+Documentación completa y correcta.
+
+Empaque sin daños visibles.
+
+Cantidades coinciden exactamente con lo solicitado.
+
+Productos coinciden con especificaciones técnicas.
+
+Sellos de seguridad intactos (si aplica).
+
+6.2 Rechazo o Aceptación Condicionada
+
+Falta documentación requerida.
+
+Empaque dañado o abierto.
+
+Cantidades mayores o menores a lo solicitado.
+
+Productos diferentes a lo especificado.
+
+Sellos de seguridad violados.
+
+Productos con fechas de caducidad vencidas o próximas (si aplica).
+
+7. INDICADORES DE DESEMPEÑO (KPIs)
+
+Recepciones conformes: Meta: >= 98% de recepciones sin discrepancias.
+
+Tiempo promedio de recepción: Meta: <= 2 horas desde arribo hasta registro.
+
+Precisión documental: Meta: 100% de recepciones con documentación completa.
+
+8. INTERACCION CON OTROS PROCESOS
+
+Logística: Notificación de arribos y gestión de desfases con proveedores.
+
+Ventas y Facturación: Coordinación de prioridades de recepción.
+
+PR-ALM-002 (Ingreso): Entrega de mercancía Recepcionada para ingreso formal al almacén.
+
+PR-ALM-006 (Entrega y Envio): Subproceso de recepción de devoluciones de préstamo.
+
+9. RECURSOS NECESARIOS
+
+Personal: Auxiliar de Almacén capacitado en la recepción.
+
+Infraestructura: Zona de recepción definida.
+
+Equipos: Flexómetro, cámara fotográfica, equipo de seguridad personal.
+
+Sistemas: Excel para registro de entradas, acceso a correo electrónico.
+
+Materiales: Formatos impresos FO-ALM-003 y FO-ALM-013, etiquetas temporales.
+
+10. DIAGRAMA DE FLUJO
+
+[Ver diagrama en carpeta DIAGRAMAS]
+
+
+
+APROBACIONES
+
+PUESTO
+
+NOMBRE
+
+FIRMA
+
+FECHA
+
+Jefe de Almacén
+
+
+
+
+
+
+
+Auxiliar de Almacén
+
+
+
+
+
+
+
+Análisis de Riesgos y Mejora Continua
+
+
+
+
+
+
+
+Gerencia General

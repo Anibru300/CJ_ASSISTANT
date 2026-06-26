@@ -1,0 +1,216 @@
+CÓDIGO:
+
+PR-ALM-002
+
+ÁREA:
+
+Almacen
+
+
+
+NOMBRE:
+
+INGRESO AL ALMACÉN
+
+VERSIÓN:
+
+3
+
+
+
+Realizado por: Ing. Carlos Urbina
+
+FECHA:
+
+16/04/2026
+
+
+
+PR-ALM-002
+
+INGRESO AL ALMACEN
+
+1. OBJETIVO
+
+Definir el procedimiento para el ingreso formal de mercancía al almacén después de la recepción, asignando ubicaciones específicas, registrando el movimiento en el sistema de control de inventarios y garantizando la trazabilidad completa del producto.
+
+
+
+2. ALCANCE
+
+Aplica a toda mercancía previamente recepcionada, inspeccionada y aprobada para su almacenamiento definitivo en las ubicaciones asignadas del almacén de 3P S.A. de C.V., incluyendo materias primas, productos terminados, insumos, material de empaque y herramientas.
+
+
+
+3. RESPONSABLES
+
+3.1 Jefe de Almacén
+
+	Aprobar ingresos y asignar ubicaciones estratégicas según rotación y volumen.
+
+Supervisar que el traslado se realice de forma segura y ordenada.
+
+Verificar que el registro en sistema sea completo y preciso.
+
+
+
+3.2 Auxiliar de Almacén
+
+Ejecutar el traslado físico de la mercancía a su ubicación final.
+
+Registrar en sistema todos los datos del ingreso.
+
+Colocar etiquetas de ubicación actualizadas.
+
+Reportar al Jefe de Almacén cualquier anomalía durante el ingreso.
+
+
+
+
+4. DESARROLLO DETALLADO DEL PROCESO
+
+4.1 Preparación del Ingreso
+
+Antes de trasladar la mercancía a su ubicación final, el Auxiliar de Almacén debe:
+
+Verificar que la recepción este completa y aprobada (PR-ALM-001).
+
+Consultar disponibilidad de espacio físico en el rack.
+
+Identificar tipo de almacenamiento requerido: ambiental, refrigerado, material peligroso o corrosivo
+
+
+
+4.2 Asignación de Ubicación
+
+El Jefe de Almacén asignará la ubicación considerando:
+
+Rotación de inventario (PEPS/FIFO): ubicar productos de mayor rotación en zonas de fácil acceso.
+
+Compatibilidad de productos: no almacenar materiales incompatibles juntos.
+
+Facilidad de acceso para surtido de pedidos y conteos.
+
+
+
+4.3 Traslado y Colocación
+
+El Auxiliar de Almacén utilizará el equipo de manipulación adecuado (carros, montacargas si aplica).
+
+Colocará el material en la ubicación exacta asignada (pasillo-rack-nivel-posición).
+
+Asegurara la estabilidad y seguridad de la carga para evitar caídas.
+
+Mantendrá el etiquetado del producto y de la ubicación siempre visible.
+
+
+
+4.4 Registro en Sistema
+
+Logística registrará obligatoriamente: número de entrada de almacén, código de producto y descripción, cantidad ingresada y unidad de medida en el SAE
+
+Jefe de Almacén registrara: La ubicación exacta, lote y fecha de caducidad (si aplica), fecha y hora de ingreso.
+
+NOTA: Siempre se debe corroborar que la entrada se haya registrado correctamente en el SAE
+
+
+
+4.5 Etiquetado de Ubicación
+
+Se colocará o actualizará la etiqueta de ubicación con:
+
+código de barras de ubicación, información del producto almacenado, cantidad existente, código, descripción, almacén 
+
+Se verificará que la etiqueta sea legible y este adherida de forma visible.
+
+
+
+5. DOCUMENTOS Y REGISTROS
+
+FO-ALM-001: Vale de Entrada.
+
+Formato de etiquetas de ubicación.
+
+Registro en Excel/ERP de entradas de almacén.
+
+PR-ALM-003: Almacenamiento y Organización 5S (siguiente paso).
+
+
+
+6. CRITERIOS DE ACEPTACION Y RECHAZO
+
+Aceptación: Mercancía previamente recepcionada y conforme, ubicación asignada correctamente, registro completo en sistema, etiquetado visible.
+
+Rechazo: Mercancía sin inspección previa, ubicación inadecuada por incompatibilidad, falta de espacio seguro, documentación incompleta.
+
+
+
+7. INDICADORES DE DESEMPEÑO (KPIs)
+
+Tiempo promedio de ingreso: Meta: <= 1 hora desde recepción a ubicación final. (dependiendo volumen)
+
+Precisión de ubicación: Meta: >= 99% (sin errores de ubicación).
+
+Cumplimiento de registro en sistema: Meta: 100% de ingresos registrados el mismo día.
+
+8. INTERACCION CON OTROS PROCESOS
+
+PR-ALM-001: Recepción de Mercancía (provee la mercancía a ingresar).
+
+PR-ALM-003: Almacenamiento y Organización 5S (asegura el orden de la ubicación).
+
+PR-ALM-004: Surtido de Pedidos (retira mercancía de las ubicaciones).
+
+Entrada de material, procedimiento pendiente
+
+9. RECURSOS NECESARIOS
+
+Personal: Auxiliar de Almacén capacitado en manejo de cargas.
+
+Infraestructura: Ubicaciones identificadas con código de barras.
+
+Equipo: Carritos, montacargas (si aplica), equipo de seguridad personal.
+
+Sistemas: Excel/ERP para registro de entradas y ubicaciones.
+
+Materiales: Etiquetas de ubicación, tinta/tóner para impresión.
+
+
+
+10. DIAGRAMA DE FLUJO
+
+[Ver diagrama en carpeta DIAGRAMAS]
+
+PUESTO
+
+NOMBRE
+
+FIRMA
+
+FECHA
+
+Jefe de Almacén
+
+
+
+
+
+
+
+Auxiliar de Almacén
+
+
+
+
+
+
+
+Análisis de Riesgos y Mejora Continua
+
+
+
+
+
+
+
+Gerencia General
